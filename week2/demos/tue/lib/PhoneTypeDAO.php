@@ -100,6 +100,7 @@ class PhoneTypeDAO implements IDAO {
         $db = $this->getDB();               
         $stmt = $db->prepare("SELECT * FROM phonetype");
         
+        
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

@@ -11,7 +11,7 @@
  *
  * @author 001270562
  */
-class EmailTypeModel {
+class EmailTypeModel implements IModel {
    private $emailtypeid; 
    private $emailtype;
    private $active;

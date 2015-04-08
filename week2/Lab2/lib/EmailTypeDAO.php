@@ -32,7 +32,7 @@ class EmailTypeDAO implements IDAO{
 
     public function idExisit($id) 
     {
-        $db = $this->getDB($db);
+        $db = $this->getDB();
         $stmt = $db->prepare("SELECT * FROM emailtype WHERE emailtypeid = :emailtypeid");
         
         if($stmt->execute(array(':emailtypeid' => $id)) && $stmt->rowCount() > 0 ) 
@@ -64,17 +64,19 @@ class EmailTypeDAO implements IDAO{
         $values = array(":emailtype" => $model->getEmailType(),
                          ":active" => $model->getActive());
         
-        if ($this->idExisit($model->getEmailtyopeid())) 
+        if ($this->idExisit($model->getEmailtypeid())) 
         {
             $values[":emailtypeid"] = $model->getPhonetypeid();
             $stmt = $db->prepare("UPDATE emailtype SET emailtype = :emailtype, active = :active WHERE emailtypeid = :emailtypeid");
         }
         else
         {
-            $stmt = $db->prepare("INSERT INTO emailtype SET emailtype = :emailtype active = :active" );
+            $stmt = $db->prepare("INSERT INTO emailtype SET emailtype = :emailtype, active = :active" );
         }
         
-        if ($stmt->execute(values) && $stmt->rowCount() > 0 )
+        
+        
+        if ($stmt->execute($values) && $stmt->rowCount() > 0 )
         {
             return true;
         }
@@ -114,7 +116,7 @@ class EmailTypeDAO implements IDAO{
         }
             else
             {
-                log($db->errorInfo() .$stmt->queryString);
+               // log($db->errorInfo() .$stmt->queryString);
             }
             $stmt->closeCursor();
             return $values;

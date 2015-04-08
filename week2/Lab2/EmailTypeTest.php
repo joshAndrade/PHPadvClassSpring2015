@@ -40,7 +40,7 @@
             }
             
             
-            if(count($errors > 0 ))
+            if(count($errors) > 0 )
             {
                 foreach ($errors as $value)
                 {
@@ -49,12 +49,12 @@
             }
             else 
             {
-                echo"It works!";
+                //echo"It works!";
                 $emailtypeModel = new EmailTypeModel();
                 $emailtypeModel->setActive($active);
                 $emailtypeModel->setEmailtype($emailType);
                 
-                var_dump($emailtypeModel);
+                
                 if($emailTypeDAO->save($emailtypeModel))
                 {
                     echo'Phone Added';
@@ -79,11 +79,13 @@
         
         <?php
         $emailTypes = $emailTypeDAO->getAllRows();
-        
+        echo "It gets here";
         foreach ($emailTypes as $value)
         {
             echo '<p>',$value->getEmailtype(), '</p>';
+            echo"and here";
         }
+        
         ?>
         
     </body>
