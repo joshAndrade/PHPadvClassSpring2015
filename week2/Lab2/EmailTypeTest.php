@@ -26,6 +26,7 @@
         
         if($util->isPostRequest())
         {
+            
             $validator = new Validator();
             $errors = array();
             if(!$validator->emailTypeIsValid($emailType))
@@ -46,15 +47,15 @@
                     echo'<p>',$value,'</p>';
                 }
             }
-            else  
+            else 
             {
+                echo"It works!";
+                $emailtypeModel = new EmailTypeModel();
+                $emailtypeModel->setActive($active);
+                $emailtypeModel->setEmailtype($emailType);
                 
-                $emailTypeModel = new EmailTypeModel();
-                $emailTypeModel->setActive($active);
-                $emailTypeModel->setEmailtype($emailType);
-                
-                
-                if($emailTypeDAO->save($emailTypeModel))
+                var_dump($emailtypeModel);
+                if($emailTypeDAO->save($emailtypeModel))
                 {
                     echo'Phone Added';
                 }
