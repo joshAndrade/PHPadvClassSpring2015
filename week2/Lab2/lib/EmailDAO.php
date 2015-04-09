@@ -7,12 +7,11 @@
  */
 
 /**
- * Description of EmailTypeDAO
+ * Description of EmailDAO
  *
- * @author 001270562
+ * @author Josh
  */
-class EmailTypeDAO implements IDAO{
-    
+class EmailDAO {
     private $DB = null;
     
     public function __construct(PDO $db) 
@@ -20,22 +19,22 @@ class EmailTypeDAO implements IDAO{
         $this->setDB($db);
     }
     
-    private function getDB() 
+    private function setDB(PDO $db) 
     {
         return $this->DB;
     }
-
-    private function setDB($DB) 
+      
+    private  function getDB()
     {
         $this->DB = $DB;
     }
-
+    
     public function idExisit($id) 
     {
         $db = $this->getDB();
-        $stmt = $db->prepare("SELECT * FROM emailtype WHERE emailtypeid = :emailtypeid");
+        $stmt = $db->prepare("SELECT emailid FROM email WHERE emailid = :emailid");
         
-        if($stmt->execute(array(':emailtypeid' => $id)) && $stmt->rowCount() > 0 ) 
+        if($stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0 ) 
         {
             return true;
         }
@@ -47,9 +46,9 @@ class EmailTypeDAO implements IDAO{
         $model = new EmailTypeModel();
         $db = $this->getDB();
         
-        $stmt = $db->prepare("SELECT * FROM emailtype WHERE emailtypeid = :emailtypeid");
+        $stmt = $db->prepare("SELECT * FROM email WHERE emailid = :emailid");
         
-        if($stmt->execute(array(':emailtypeid' => $id)) && $stmt->rowCount() > 0 )
+        if($stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0 )
         {
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $model->map($reults);
@@ -61,17 +60,18 @@ class EmailTypeDAO implements IDAO{
     {
         $db = $this->getDB();
         
-        $values = array(":emailtype" => $model->getEmailType(),
-                         ":active" => $model->getActive());
+        $values = array(":email" => $model->getEmail(),
+                        ":emailtypeid" => $model->getEmailType(),
+                        ":active" => $model->getActive());
         
         if ($this->idExisit($model->getEmailtypeid())) 
         {
             $values[":emailtypeid"] = $model->getPhonetypeid();
-            $stmt = $db->prepare("UPDATE emailtype SET emailtype = :emailtype, active = :active WHERE emailtypeid = :emailtypeid");
+            $stmt = $db->prepare("UPDATE email SET email = :email, emailtypedid = :emailtypeid, active = :active, lastupdated = now() WHERE emailid = :emailid");
         }
         else
         {
-            $stmt = $db->prepare("INSERT INTO emailtype SET emailtype = :emailtype, active = :active" );
+            $stmt = $db->prepare("INSERT INTO email SET email = :email, emailtypeid = :emailtypeid, active = :active, logged = now(), lastupdated = now() " );
         }
         
         
@@ -87,9 +87,9 @@ class EmailTypeDAO implements IDAO{
     public function delete($id) 
     {
         $db = $this->getDB();
-        $stmt = $db->prepare("Delete FROM emailtype WHERE emailtypeid = :emailtypeid");
+        $stmt = $db->prepare("Delete FROM email WHERE emailid = :emailid");
         
-        if ($stmt->execute(array(':emailtype' => $id)) && $stmt->rowCount() > 0 )
+        if ($stmt->execute(array(':email' => $id)) && $stmt->rowCount() > 0 )
         {
             return true;
         }
@@ -101,7 +101,8 @@ class EmailTypeDAO implements IDAO{
     {
         $values = array();
         $db = $this->getDB();
-        $stmt= $db->prepare("SELECT * FROM emailtype");
+        //#####################################################################################################################################################################
+        $stmt= $db->prepare("SELECT email.emailid, email.email, email.emailtypeid, emailtype.emailtype, emailtype.active as emailtypeactive"); // ########### FINISH THIS SELECT STATMENT
         
         if ($stmt->execute() && $stmt->rowCount() > 0)
         {
@@ -121,10 +122,5 @@ class EmailTypeDAO implements IDAO{
             $stmt->closeCursor();
             return $values;
         }
-    }
     
-
-    
-    
-    
-
+}

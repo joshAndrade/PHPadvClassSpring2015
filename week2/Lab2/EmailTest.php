@@ -1,7 +1,6 @@
 <?php include './bootstrap.php'; ?>
 <!DOCTYPE html>
 
-
 <html>
     <head>
         <meta charset="UTF-8">
@@ -10,11 +9,14 @@
     <body>
         <?php
         
-         
-         $emailmodel = new EmailModel();
-         $emailmodel->setEmail('test@test.com');
-         
-         echo $emailmodel->getEmail();
+        $dbConfig = array(
+            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
+            "DB_USER"=>'root',
+            "DB_PASSWORD"=>''
+        );
+        
+        $pdo = new DB($dbConfig);
+        $db = $pdo->getDB();
         ?>
     </body>
 </html>

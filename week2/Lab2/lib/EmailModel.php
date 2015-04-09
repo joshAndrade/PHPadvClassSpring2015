@@ -11,7 +11,7 @@
  *
  * @author 001270562
  */
-class EmailModel {
+class EmailModel implements IModel{
     private $emailid;
     private $email;
     private $emailtypepeid;
@@ -68,28 +68,31 @@ class EmailModel {
     }
 
 
-    /*public function reset() {
+    public function reset() {
+        $this->setEmail('');
         $this->setEmailtypeid('');
-        $this->setEmailtype('');
+        $this->setEmailid('');
         $this->setActive('');
+        $this->setLogged('');
+        $this->setLastupdated('');
         return $this;
     }
     
     public function map(Array $values) {
         
-        if ( array_key_exists('phonetypeid', $values) ) {
-            $this->setPhonetypeid($values['phonetypeid']);
+        if ( array_key_exists('emailtypeid', $values) ) {
+            $this->setPhonetypeid($values['emailtypeid']);
         }
         
-        if ( array_key_exists('phonetype', $values) ) {
-            $this->setPhonetype($values['phonetype']);
+        if ( array_key_exists('emailtype', $values) ) {
+            $this->setPhonetype($values['emailtype']);
         }
         
         if ( array_key_exists('active', $values) ) {
             $this->setActive($values['active']);
         }
         return $this;
-    }*/
+    }
     
     
 
