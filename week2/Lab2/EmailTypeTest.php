@@ -80,10 +80,11 @@
         <?php
         $emailTypes = $emailTypeDAO->getAllRows();
         echo "It gets here";
+         
+            
         foreach ($emailTypes as $value)
         {
             echo '<p>',$value->getEmailtype(), '</p>';
-            echo"and here";
         }
         
         ?>

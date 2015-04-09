@@ -111,7 +111,7 @@ class EmailTypeDAO implements IDAO{
             {
                 $model = new EmailTypeModel();
                 $model->reset()->map($value);
-                $value[] = $model;
+                $values[] = $model;
             }
         }
             else

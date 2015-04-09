@@ -90,7 +90,7 @@
                 echo '<p>',$value->getPhonetype(),'</p>';
             }
             
-           // var_dump($phoneTypes);
+           //var_dump($phoneTypes);
             
             /*
              foreach ($phoneTypes as $value) {
