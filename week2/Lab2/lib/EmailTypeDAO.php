@@ -89,7 +89,7 @@ class EmailTypeDAO implements IDAO{
         $db = $this->getDB();
         $stmt = $db->prepare("Delete FROM emailtype WHERE emailtypeid = :emailtypeid");
         
-        if ($stmt->execute(array(':emailtype' => $id)) && $stmt->rowCount() > 0 )
+        if ($stmt->execute(array(':emailtypeid' => $id)) && $stmt->rowCount() > 0 )
         {
             return true;
         }

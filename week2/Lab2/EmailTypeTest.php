@@ -79,12 +79,12 @@
         
         <?php
         $emailTypes = $emailTypeDAO->getAllRows();
-        echo "It gets here";
+        //echo "It gets here";
          
             
         foreach ($emailTypes as $value)
         {
-            echo '<p>',$value->getEmailtype(), '</p>';
+            echo '<a href="DeleteEmailType.php?emailtypeid=' . $value->getEmailtypeid() . '"><p>',$value->getEmailtype(), '</p></a>';
         }
         
         ?>

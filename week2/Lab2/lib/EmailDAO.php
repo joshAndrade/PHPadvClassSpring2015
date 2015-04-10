@@ -11,7 +11,7 @@
  *
  * @author Josh
  */
-class EmailDAO {
+class EmailDAO implements IDAO{
     private $DB = null;
     
     public function __construct(PDO $db) 
@@ -19,15 +19,15 @@ class EmailDAO {
         $this->setDB($db);
     }
     
-    private function setDB(PDO $db) 
-    {
-        return $this->DB;
-    }
-      
-    private  function getDB()
+    private  function setDB(PDO $DB)
     {
         $this->DB = $DB;
     }
+    
+     private function getDB() 
+    {
+        return $this->DB;
+    }  
     
     public function idExisit($id) 
     {
@@ -46,7 +46,8 @@ class EmailDAO {
         $model = new EmailTypeModel();
         $db = $this->getDB();
         
-        $stmt = $db->prepare("SELECT * FROM email WHERE emailid = :emailid");
+        $stmt = $db->prepare("SELECT email.emailid, email.email, email.emailtypeid, emailtype.emailtype, emailtype.active as emailtypeactive, email.logged, email.lastupdated, email.active"
+                ."FROM email LEFT JOIN emailtype on email email.emailtypeid = emailtype.emailtypeid WHERE emailid = emailid"); 
         
         if($stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0 )
         {
@@ -61,13 +62,13 @@ class EmailDAO {
         $db = $this->getDB();
         
         $values = array(":email" => $model->getEmail(),
-                        ":emailtypeid" => $model->getEmailType(),
+                        ":emailtypeid" => $model->getEmailtypeid(),
                         ":active" => $model->getActive());
         
         if ($this->idExisit($model->getEmailtypeid())) 
         {
             $values[":emailtypeid"] = $model->getPhonetypeid();
-            $stmt = $db->prepare("UPDATE email SET email = :email, emailtypedid = :emailtypeid, active = :active, lastupdated = now() WHERE emailid = :emailid");
+            $stmt = $db->prepare("UPDATE email SET email = :email, emailtypeid = :emailtypeid, active = :active, lastupdated = now() WHERE emailid = :emailid");
         }
         else
         {
@@ -101,8 +102,8 @@ class EmailDAO {
     {
         $values = array();
         $db = $this->getDB();
-        //#####################################################################################################################################################################
-        $stmt= $db->prepare("SELECT email.emailid, email.email, email.emailtypeid, emailtype.emailtype, emailtype.active as emailtypeactive"); // ########### FINISH THIS SELECT STATMENT
+        
+        $stmt= $db->prepare("SELECT email.emailid, email.email, email.emailtypeid, emailtype.emailtype, emailtype.active as emailtypeactive, email.logged, email.lastupdated, email.active FROM email LEFT JOIN emailtype on email.emailtypeid = emailtype.emailtypeid"); 
         
         if ($stmt->execute() && $stmt->rowCount() > 0)
         {
@@ -110,7 +111,7 @@ class EmailDAO {
             
             foreach ($results as $value)
             {
-                $model = new EmailTypeModel();
+                $model = new EmailModel();
                 $model->reset()->map($value);
                 $values[] = $model;
             }

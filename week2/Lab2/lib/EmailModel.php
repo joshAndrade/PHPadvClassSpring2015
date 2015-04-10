@@ -14,10 +14,12 @@
 class EmailModel implements IModel{
     private $emailid;
     private $email;
-    private $emailtypepeid;
+    private $emailtypeid;
+    private $emailtype;
     private $logged;
     private $lastupdated;
     private $active;
+    private $emailtypeactive;
     
     function getEmailid() {
         return $this->emailid;
@@ -27,8 +29,8 @@ class EmailModel implements IModel{
         return $this->email;
     }
 
-    function getEmailtypepeid() {
-        return $this->emailtypepeid;
+    function getEmailtypeid() {
+        return $this->emailtypeid;
     }
 
     function getLogged() {
@@ -51,8 +53,8 @@ class EmailModel implements IModel{
         $this->email = $email;
     }
 
-    function setEmailtypepeid($emailtypepeid) {
-        $this->emailtypepeid = $emailtypepeid;
+    function setEmailtypeid($emailtypeid) {
+        $this->emailtypeid = $emailtypeid;
     }
 
     function setLogged($logged) {
@@ -67,11 +69,29 @@ class EmailModel implements IModel{
         $this->active = $active;
     }
 
+    function getEmailtypeactive() {
+        return $this->emailtypeactive;
+    }
 
+    function setEmailtypeactive($emailtypeactive) {
+        $this->emailtypeactive = $emailtypeactive;
+    }
+
+    function getEmailtype() {
+        return $this->emailtype;
+    }
+
+    function setEmailtype($emailtype) {
+        $this->emailtype = $emailtype;
+    }
+
+        
     public function reset() {
+        $this->setEmailid('');
         $this->setEmail('');
         $this->setEmailtypeid('');
-        $this->setEmailid('');
+        $this->setEmailtype('');
+        $this->setEmailtypeactive('');
         $this->setActive('');
         $this->setLogged('');
         $this->setLastupdated('');
@@ -80,16 +100,44 @@ class EmailModel implements IModel{
     
     public function map(Array $values) {
         
-        if ( array_key_exists('emailtypeid', $values) ) {
-            $this->setPhonetypeid($values['emailtypeid']);
+        if(array_key_exists('emailid', $values))
+        {
+            $this->setEmailid($values['emailid']);
         }
         
-        if ( array_key_exists('emailtype', $values) ) {
-            $this->setPhonetype($values['emailtype']);
+        if(array_key_exists('email', $values))
+        {
+            $this->setEmail($values['email']);
         }
         
-        if ( array_key_exists('active', $values) ) {
+        if ( array_key_exists('emailtypeid', $values) ) 
+        {
+            $this->setEmailtypeid($values['emailtypeid']);
+        }
+        
+        if ( array_key_exists('emailtype', $values) ) 
+        {
+            $this->setEmailtype($values['emailtype']);
+        }
+        
+        if(array_key_exists('emailtypeactive', $values))
+        {
+            $this->setEmailtypeactive($values['emailtypeactive']);
+        }
+        
+        if ( array_key_exists('active', $values) ) 
+        {
             $this->setActive($values['active']);
+        }
+        
+        if(array_key_exists('logged', $values))
+        {
+            $this->setLogged($values['logged']);
+        }
+        
+        if(array_key_exists('lastupdated', $values))
+        {
+            $this->setLastupdated($values['lastupdated']);
         }
         return $this;
     }
