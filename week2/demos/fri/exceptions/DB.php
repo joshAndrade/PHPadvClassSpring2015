@@ -1,20 +1,15 @@
 <?php
-namespace week2\jAndrade;
-use PDO;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- * Description of DB
+ * DB is the general class to connection to our database
  *
- * @author 001270562
+ * @author GForti
  */
+
+
 class DB {
-   protected $db = null;
+    
+    protected $db = null;
     private $dbConfig = array();
    
      
@@ -47,10 +42,9 @@ class DB {
         try {
             $config = $this->getDbConfig();
             $this->db = new PDO($config['DB_DNS'], $config['DB_USER'], $config['DB_PASSWORD']);
-            $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-        } catch (Exception $ex) {
-          
+        } catch (Exception $ex) {          
            $this->closeDB();
+           throw new DBException($ex->getMessage());
         }
         return $this->db;        
     }

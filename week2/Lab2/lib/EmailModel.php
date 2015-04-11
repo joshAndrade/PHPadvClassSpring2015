@@ -1,4 +1,6 @@
 <?php
+namespace week2\jAndrade;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.

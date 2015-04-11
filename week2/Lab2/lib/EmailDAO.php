@@ -1,4 +1,6 @@
 <?php
+namespace week2\jAndrade;
+use PDO;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -90,7 +92,7 @@ class EmailDAO implements IDAO{
         $db = $this->getDB();
         $stmt = $db->prepare("Delete FROM email WHERE emailid = :emailid");
         
-        if ($stmt->execute(array(':email' => $id)) && $stmt->rowCount() > 0 )
+        if ($stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0 )
         {
             return true;
         }

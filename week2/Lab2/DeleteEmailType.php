@@ -1,4 +1,6 @@
-<?php include './bootstrap.php'; ?>
+<?php 
+namespace week2\jAndrade;
+include './bootstrap.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,7 +27,7 @@
                $emailTypeDAO = new EmailTypeDAO($db);
                
                if ( $emailTypeDAO->delete($emailtypeid) ) 
-                {
+               {
                    echo 'Email Type was deleted';                  
                }                
         

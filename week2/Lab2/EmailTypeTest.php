@@ -1,4 +1,6 @@
-<?php include './bootstrap.php'; ?>
+<?php 
+namespace week2\jAndrade;
+include './bootstrap.php'; ?>
 <!DOCTYPE html>
 
 <html>
@@ -57,7 +59,7 @@
                 
                 if($emailTypeDAO->save($emailtypeModel))
                 {
-                    echo'Phone Added';
+                    echo'Email Type Added';
                 }
             }
             
@@ -84,7 +86,9 @@
             
         foreach ($emailTypes as $value)
         {
-            echo '<a href="DeleteEmailType.php?emailtypeid=' . $value->getEmailtypeid() . '"><p>',$value->getEmailtype(), '</p></a>';
+            echo '<p>',$value->getEmailtype(), ' <a href="DeleteEmailType.php?emailtypeid=' . $value->getEmailtypeid() . '">Delete</a>   ';
+            echo '<a href="UpdateEmailType.php?emailtypeid=' . $value->getEmailtypeid() . '?emailtype=' . $value->getEmailtype() . '?active=' . $value->getActive() . '">Update</a>';
+                    
         }
         
         ?>

@@ -1,4 +1,6 @@
-<?php include './bootstrap.php'; ?>
+<?php 
+namespace week2\jAndrade;
+include './bootstrap.php'; ?>
 <!DOCTYPE html>
 
 <html>
@@ -108,6 +110,7 @@
                     <th>Last updated</th>
                     <th>Logged</th>
                     <th>Active</th>
+                    
                 </tr>
                 
         <?php
@@ -118,7 +121,10 @@
             {
                 
                 echo '<tr><td>',$value->getEmail(),'</td><td>',$value->getEmailtype(),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLastupdated())),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLogged())),'</td>';
-                echo '<td>',($value->getActive() == 1 ? 'Yes' : 'No'), '</td></tr>';
+                echo '<td>',($value->getActive() == 1 ? 'Yes' : 'No'), '</td>';
+                echo '<td><a href="DeleteEmail.php?emailid=' . $value->getEmailid() . '">Delete</a></td>';
+                echo '<td><a href="UpdateEmail.php?</tr>';
+                
             }
         
         ?>

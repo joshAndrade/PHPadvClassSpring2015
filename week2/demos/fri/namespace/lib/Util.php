@@ -1,11 +1,13 @@
 <?php
-namespace week2\jAndrade;
 
 /**
  * Util - functions used to help with the over all application
  *
  * @author User
  */
+
+namespace week2\gforti;
+
 class Util {
     
     
