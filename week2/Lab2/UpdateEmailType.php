@@ -24,23 +24,39 @@ Updates Email type based on the id pulled from the selected type.
         $pdo = new DB($dbConfig);
         $db = $pdo->getDB();
         
-        $emailType = filter_input(INPUT_GET , 'emailtype');
-        $active = filter_input(INPUT_GET, 'active');
-        
-        
-        echo $emailType;
-        echo $active;
+       
         
         $util = new Util();
         $emailTypeDAO = new EmailTypeDAO($db);
+        $validator = new Validator();
+        $emailTypeModel = new EmailTypeModel();
         
         
+        if ( $util->isPostRequest() ) 
+        {
+            
+            $emailTypeModel->map(filter_input_array(INPUT_POST));
+                       
+        } else {
+            $emailTypeid = filter_input(INPUT_GET, 'emailtypeid');
+            $emailTypeModel = $emailTypeDAO->getById($emailTypeid);
+        }
+        
+        
+        $emailTypeid = $emailTypeModel->getEmailtypeid();
+        $emailType = $emailTypeModel->getEmailtype();
+        $active = $emailTypeModel->getActive(); 
+        
+        
+          
+        
+        var_dump($emailTypeModel);
         
        ?>
-        <h3>Add Email type</h3>
+        <h3>Update Email type</h3>
         <form action="#" method="post">
             <label>Email Type:</label>
-            <input type="text" name="emailtype" value="<?php echo $emailType ?>" placeholder="" />
+            <input type="text" name="emailtype" value="<?php echo $emailType; ?>" placeholder="" />
             <br /><br />
             <label>Active:</label>
             <input type="number" max="1" min="0" name="active" value="<?php echo $active; ?> " />
@@ -49,10 +65,6 @@ Updates Email type based on the id pulled from the selected type.
         </form>
         
         
-        <?php
         
-        
-        
-        ?>
     </body>
 </html>

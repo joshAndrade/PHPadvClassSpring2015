@@ -87,7 +87,7 @@ include './bootstrap.php'; ?>
         foreach ($emailTypes as $value)
         {
             echo '<p>',$value->getEmailtype(), ' <a href="DeleteEmailType.php?emailtypeid=' . $value->getEmailtypeid() . '">Delete</a>   ';
-            echo '<a href="UpdateEmailType.php?emailtypeid=' . $value->getEmailtypeid() . '?emailtype=' . $value->getEmailtype() . '?active=' . $value->getActive() . '">Update</a>';
+            echo '<a href="UpdateEmailType.php?emailtypeid=' . $value->getEmailtypeid() . '">Update</a>';
                     
         }
         

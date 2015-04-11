@@ -54,7 +54,7 @@ class EmailTypeDAO implements IDAO{
         if($stmt->execute(array(':emailtypeid' => $id)) && $stmt->rowCount() > 0 )
         {
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $model->map($reults);
+            $model->map($results);
         }
         return $model;
     }
