@@ -60,6 +60,7 @@ include './bootstrap.php'; ?>
                 if($emailTypeDAO->save($emailtypeModel))
                 {
                     echo'Email Type Added';
+                   
                 }
             }
             

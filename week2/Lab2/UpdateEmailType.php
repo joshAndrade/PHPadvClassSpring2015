@@ -40,17 +40,47 @@ Updates Email type based on the id pulled from the selected type.
         } else {
             $emailTypeid = filter_input(INPUT_GET, 'emailtypeid');
             $emailTypeModel = $emailTypeDAO->getById($emailTypeid);
+        
         }
         
+     
         
         $emailTypeid = $emailTypeModel->getEmailtypeid();
         $emailType = $emailTypeModel->getEmailtype();
         $active = $emailTypeModel->getActive(); 
         
-        
-          
-        
-        var_dump($emailTypeModel);
+        if($util->isPostRequest())
+        {
+
+            $errors = array();
+            if(!$validator->emailTypeIsValid($emailType))
+            {
+                $errors[] = 'Email Type is invalid';
+            }
+            
+            if(!$validator->activeIsValid($active))
+            {
+                $errors[] = 'Active is invalid';
+            }
+            
+            
+            if(count($errors) > 0 )
+            {
+                foreach ($errors as $value)
+                {
+                    echo'<p>',$value,'</p>';
+                }
+            }
+            else 
+            {
+                                
+                if($emailTypeDAO->save($emailTypeModel))
+                {
+                    echo'Email Type Updated';
+                    
+                }
+            }
+        }
         
        ?>
         <h3>Update Email type</h3>
@@ -59,12 +89,16 @@ Updates Email type based on the id pulled from the selected type.
             <input type="text" name="emailtype" value="<?php echo $emailType; ?>" placeholder="" />
             <br /><br />
             <label>Active:</label>
-            <input type="number" max="1" min="0" name="active" value="<?php echo $active; ?> " />
+            <input type="number" max="1" min="0" name="active" value="<?php echo $active; ?>" />
+            
+            
+            
             <br /><br />
             <input type="submit" value="Submit" />
         </form>
         
-        
-        
+        <?php
+        echo '<p><a href="',filter_input(INPUT_SERVER, 'HTTP_REFERER'),'">Back to Previous Page</a></p>';
+        ?>
     </body>
 </html>

@@ -122,8 +122,7 @@ include './bootstrap.php'; ?>
                 
                 echo '<tr><td>',$value->getEmail(),'</td><td>',$value->getEmailtype(),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLastupdated())),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLogged())),'</td>';
                 echo '<td>',($value->getActive() == 1 ? 'Yes' : 'No'), '</td>';
-                echo '<td><a href="DeleteEmail.php?emailid=' . $value->getEmailid() . '">Delete</a></td>';
-                echo '<td><a href="UpdateEmail.php?</tr>';
+                echo '<td><a href="DeleteEmail.php?emailid=' . $value->getEmailid() . '">Delete</a>  ' . '  <a href="UpdateEmail.php?emailid=' . $value->getEmailid() . '">Update</a></td></tr>';
                 
             }
         

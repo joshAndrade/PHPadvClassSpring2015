@@ -35,7 +35,8 @@
         $phonetypeid = $phonetypeModel->getPhonetypeid();
         $phoneType = $phonetypeModel->getPhonetype();
         $active = $phonetypeModel->getActive();  
-              
+           
+        
         
         $phoneTypeService = new PhoneTypeService($db, $util, $validator, $phoneTypeDAO, $phonetypeModel);
         

@@ -19,5 +19,10 @@ and open the template in the editor.
         <?php
         
         ?>
+        
+        
+        <?php
+        echo '<p><a href="',filter_input(INPUT_SERVER, 'HTTP_REFERER'),'">Back to Previous Page</a></p>';
+        ?>
     </body>
 </html>

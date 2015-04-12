@@ -26,6 +26,7 @@ class EmailTypeModel implements IModel {
    }
 
    function getActive() {
+      
        return $this->active;
    }
 
@@ -38,6 +39,7 @@ class EmailTypeModel implements IModel {
    }
 
    function setActive($active) {
+       
        $this->active = $active;
    }
 
