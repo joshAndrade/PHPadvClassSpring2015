@@ -68,7 +68,7 @@ class EmailTypeDAO implements IDAO{
         
         if ($this->idExisit($model->getEmailtypeid())) 
         {
-            $values[":emailtypeid"] = $model->getPhonetypeid();
+            $values[":emailtypeid"] = $model->getEmailtypeid();
             $stmt = $db->prepare("UPDATE emailtype SET emailtype = :emailtype, active = :active WHERE emailtypeid = :emailtypeid");
         }
         else

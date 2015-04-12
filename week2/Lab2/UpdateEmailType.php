@@ -30,7 +30,7 @@ Updates Email type based on the id pulled from the selected type.
         $emailTypeDAO = new EmailTypeDAO($db);
         $validator = new Validator();
         $emailTypeModel = new EmailTypeModel();
-        
+        $errors = array();
         
         if ( $util->isPostRequest() ) 
         {
@@ -49,10 +49,15 @@ Updates Email type based on the id pulled from the selected type.
         $emailType = $emailTypeModel->getEmailtype();
         $active = $emailTypeModel->getActive(); 
         
-        if($util->isPostRequest())
+        
+        if ($util->isPostRequest())
         {
-
-            $errors = array();
+            $emailTypeid = filter_input(INPUT_GET, 'emailtypeid');
+            $emailTypeModel = $emailTypeDAO->getById($emailTypeid);
+            
+            $emailType = filter_input(INPUT_POST, 'emailtype');
+            $active = filter_input(INPUT_POST, 'active');
+        
             if(!$validator->emailTypeIsValid($emailType))
             {
                 $errors[] = 'Email Type is invalid';
@@ -62,25 +67,37 @@ Updates Email type based on the id pulled from the selected type.
             {
                 $errors[] = 'Active is invalid';
             }
-            
+
             
             if(count($errors) > 0 )
             {
                 foreach ($errors as $value)
                 {
+                  
                     echo'<p>',$value,'</p>';
                 }
             }
             else 
             {
-                                
-                if($emailTypeDAO->save($emailTypeModel))
-                {
-                    echo'Email Type Updated';
-                    
-                }
+                 //echo 'Email Type ID: ' . $emailTypeid;
+                       
+                     
+                       if($emailTypeDAO->idExisit($emailTypeModel->getEmailtypeid()))
+                       {
+                           
+                           $emailTypeModel->setActive($active);
+                           $emailTypeModel->setEmailtype($emailType);
+                            
+                           if($emailTypeDAO->save($emailTypeModel));
+                            
+                                echo "Email Type Updated.";
+                            
+                            
+                            
+                        }
             }
-        }
+       }
+        
         
        ?>
         <h3>Update Email type</h3>
@@ -98,7 +115,7 @@ Updates Email type based on the id pulled from the selected type.
         </form>
         
         <?php
-        echo '<p><a href="',filter_input(INPUT_SERVER, 'HTTP_REFERER'),'">Back to Previous Page</a></p>';
+        echo '<p><a href="EmailTypeTest.php">Back to Previous Page</a></p>';
         ?>
     </body>
 </html>
