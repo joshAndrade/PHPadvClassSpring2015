@@ -12,8 +12,22 @@ namespace week2\jAndrade;
  * @author 001270562
  */
 interface IModel {
+    /**
+     * 
+     * A method used to reset all values.
+     * 
+     * @return SELF
+     */
    
     public function reset();
     
+    /**
+     * A method to set all values based on an associative array.
+     * 
+     * @param {Array} [$values] - must be a valid associative array
+     *
+     * @return SELF
+     * 
+     */
     public function map(array $values);
 }

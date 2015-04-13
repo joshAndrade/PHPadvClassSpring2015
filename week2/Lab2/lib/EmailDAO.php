@@ -45,16 +45,15 @@ class EmailDAO implements IDAO{
     
     public function getById($id) 
     {
-        $model = new EmailTypeModel();
+        $model = new EmailModel();
         $db = $this->getDB();
         
-        $stmt = $db->prepare("SELECT email.emailid, email.email, email.emailtypeid, emailtype.emailtype, emailtype.active as emailtypeactive, email.logged, email.lastupdated, email.active"
-                ."FROM email LEFT JOIN emailtype on email email.emailtypeid = emailtype.emailtypeid WHERE emailid = emailid"); 
+        $stmt = $db->prepare("SELECT email.emailid, email.email, email.emailtypeid, emailtype.emailtype, emailtype.active as emailtypeactive, email.logged, email.lastupdated, email.active FROM email LEFT JOIN emailtype on email.emailtypeid = emailtype.emailtypeid WHERE emailid = :emailid"); 
         
         if($stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0 )
         {
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $model->map($reults);
+            $model->map($results);
         }
         return $model;
     }
@@ -67,9 +66,9 @@ class EmailDAO implements IDAO{
                         ":emailtypeid" => $model->getEmailtypeid(),
                         ":active" => $model->getActive());
         
-        if ($this->idExisit($model->getEmailtypeid())) 
+        if ($this->idExisit($model->getEmailid())) 
         {
-            $values[":emailtypeid"] = $model->getPhonetypeid();
+            $values[":emailid"] = $model->getemailid();
             $stmt = $db->prepare("UPDATE email SET email = :email, emailtypeid = :emailtypeid, active = :active, lastupdated = now() WHERE emailid = :emailid");
         }
         else
