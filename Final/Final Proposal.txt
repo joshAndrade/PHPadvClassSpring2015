@@ -1,0 +1,15 @@
+Team Members - Me
+
+Project Idea - I will create a survey that only registered users can fill out.  
+The results of this survey will be displayed in a table along with statistics about the data.
+Users will be able to update and delete their choices based on the user ID of the user logged in.
+There will be a admin account that will be able to update and delete all accounts.
+
+Project Tasks:
+  Create basic design for site. Estimated Time - 1 day
+  Create a register and login page that is connected to table. Estimated Time - 1 day
+  Create the survey and insert the data into a table. Estimated Time - 1 week
+  Display survey results and use calculations to display specific stats about the data. Estimated Time - 1 week
+  Create a way to allow only the user logged in to update and delete their data. Estimated Time - 1/2 week
+  Create an admin account that will use different pages from normal users to update and delete data of all users. Estimated Time - 1/2 week
+  Finish site design. Estimated Time - 1/2 week
