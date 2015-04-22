@@ -7,10 +7,14 @@
  */
 
 /**
- * Description of index
+ * Description of IModel
  *
- * @author 001270562
+ * @author User
  */
-class index {
-    //put your code here
+namespace App\models\interfaces;
+
+interface IModel {
+    public function reset();
+    public function map(array $values);
+    public function getAllValues();
 }
