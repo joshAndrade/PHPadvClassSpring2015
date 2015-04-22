@@ -39,7 +39,7 @@ class EmailTypeService implements IService
         $this->DAO = $DAO;
     }
     
-    public function __construct(IDAO $PhoneTypeDAO, $validator) 
+    public function __construct(IDAO $EmailTypeDAO, $validator) 
     {
         $this->DAO($EmailTypeDAO);
         $this->setValidator($validator);
