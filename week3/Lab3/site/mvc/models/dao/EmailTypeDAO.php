@@ -84,7 +84,7 @@ class EmailTypeDAO extends BaseDAO implements IDAO
         {
             $stmt = $db->prepare("UPDATE emailtype SET emailtype = :emailtype, active = :active WHERE emailtypeid = :emailtypeid");
             
-            if ($stmt = $db->execute($binds) && $stmt->rowcount() > 0)
+            if ($stmt->execute($binds) && $stmt->rowcount() > 0)
             {
                 return true;
             }

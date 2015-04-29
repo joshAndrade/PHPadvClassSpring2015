@@ -39,7 +39,10 @@ class DB implements IService
    }
 
    private function setLog($log) {
+       if($log instanceof ILogging)
+       {
        $this->log = $log;
+       }
    }
 
 

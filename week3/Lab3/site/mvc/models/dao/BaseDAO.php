@@ -34,7 +34,7 @@ abstract class BaseDAO
         return $this->log;
     }
 
-    protected function setDB($DB) 
+    protected function setDB(PDO $DB) 
     {
         $this->DB = $DB;
     }

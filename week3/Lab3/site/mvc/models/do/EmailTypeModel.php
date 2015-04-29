@@ -13,7 +13,7 @@ class EmailTypeModel extends BaseModel{
     
     private $emailtypeid;
     private $emailtype;
-    private $activel;
+    private $active;
     
     function getEmailtypeid() {
         return $this->emailtypeid;
@@ -23,8 +23,8 @@ class EmailTypeModel extends BaseModel{
         return $this->emailtype;
     }
 
-    function getActivel() {
-        return $this->activel;
+    function getActive() {
+        return $this->active;
     }
 
     function setEmailtypeid($emailtypeid) {
@@ -35,8 +35,8 @@ class EmailTypeModel extends BaseModel{
         $this->emailtype = $emailtype;
     }
 
-    function setActivel($activel) {
-        $this->activel = $activel;
+    function setActive($active) {
+        $this->active = $active;
     }
 
 

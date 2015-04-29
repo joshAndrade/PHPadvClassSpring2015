@@ -168,7 +168,7 @@ use Exception;
     function runPage() {
         $_configURL = '.' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.ini.php';
         $index = new Index();
-
+        echo $_configURL;
         /*
          * Functions to use for Dependency Injection
          */
@@ -199,6 +199,7 @@ use Exception;
         
         // run application!
         $index->run($_scope);
+        var_dump($_scope);
     }
     
     runPage();

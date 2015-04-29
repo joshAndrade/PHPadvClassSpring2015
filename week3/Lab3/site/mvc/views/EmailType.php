@@ -8,6 +8,7 @@
     <body>
         <?php
         
+        
         if($scope->util->isPostRequest())
         {
             if(isset($scope->view['errors']) )

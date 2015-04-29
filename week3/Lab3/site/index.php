@@ -62,7 +62,7 @@ final class index
     protected function runController($page, IService $scope)
     {
         $class_name = $this->getPageController($page);
-        $class_name = NULL;
+        $controller = NULL;
         
         if (array_key_exists($class_name,$this->DI))
         {
@@ -98,7 +98,7 @@ final class index
             $this->getLog()->logException($ex->getMessage());
         }
         
-        $this->redirect('page404',array("error"=>$ex->getMessage()));
+        //ASDFFFFFFFFFFFFFFSDFWAEEEEEEEEEEEEEEEEEEEEEF!!!!!!!!!!!!!!!!!!!!!!!!!!!!//$this->redirect('page404',array("error"=>$ex->getMessage()));
     }
     
     /**
@@ -210,6 +210,7 @@ function runPage()
     ;
     
     $index->run($_scope);
+    var_dump($_scope);
 }
 
 runPage();
