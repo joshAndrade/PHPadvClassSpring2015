@@ -25,13 +25,14 @@ class DB implements IService
        $this->setLog($log);
    }
 
+    private function getDbConfig() {
+        return $this->dbConfig;
+    }
+   
    private function getLog() {
        return $this->log;
    }
 
-   private function setDb($db) {
-       $this->db = $db;
-   }
 
    private function setDbConfig($dbConfig) {
        $this->dbConfig = $dbConfig;
@@ -52,6 +53,7 @@ class DB implements IService
        {
            $config = $this->getDbConfig();
            $this->db = new PDO($config['DB_DNS'], $config['DB_USER'], $config['DB_PASSWORD']);
+           $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
        }
        catch (Exception $ex)
        {

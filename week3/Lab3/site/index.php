@@ -38,7 +38,7 @@ final class index
     public  function __construct() 
     {
         error_reporting(E_ALL | E_STRICT);
-        mb_interanl_encoding('UTF-8');
+        mb_internal_encoding('UTF-8');
         set_exception_handler(array($this, 'handleException'));
         spl_autoload_register(array($this, 'loadClass'));
         //session
@@ -56,7 +56,7 @@ final class index
         $page = $this->getPage();
         if (!$this->runController($page,$scope))
         {
-            throw new ControllerFailedException('Controller for page "' . $page . '" failed');
+            throw new ControllerFailed('Controller for page "' . $page . '" failed');
         }
     }
     protected function runController($page, IService $scope)
@@ -195,12 +195,21 @@ function runPage()
     
     $_emailTypeModel = new EmailTypeModel();
     $_emailTypeDAO = new EmailTypeDAO($_pdo->getDB(), $_emailTypeModel, $_log);
-    $_emailTypdService = new EmailTypeService($_emailTypeDAO, $validator, $_emailTypeModel);
+    $_emailTypeService = new EmailTypeService($_emailTypeDAO, $_validator, $_emailTypeModel);
     
     
     
     $index->addDIController('index', function()
     {
         return new \Lab3\controller\IndexController();
-    })//########################################HERE!!!!!!!!!!!!!!!!!!!##############################
+    })
+    ->addDIController('EmailType', function() use ($_emailTypeService)
+    {return new \Lab3\controller\EmailtypeController($_emailTypeService);
+    })
+    
+    ;
+    
+    $index->run($_scope);
 }
+
+runPage();

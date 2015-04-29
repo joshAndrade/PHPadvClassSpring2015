@@ -27,7 +27,7 @@ class Config implements IService
     
     private function setData($iniFile)
     {
-        if (!empty($iniFile) && file_exists($filename))
+        if (!empty($iniFile) && file_exists($iniFile))
         {
             $this->data = parse_ini_file($iniFile, true);
         }

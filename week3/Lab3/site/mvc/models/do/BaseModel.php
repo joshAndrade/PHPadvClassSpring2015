@@ -11,9 +11,9 @@ namespace Lab3\models\services;
 
 use Lab3\models\interfaces\IModel;
 
-abstract class BaseModel {
+abstract class BaseModel implements IModel{
     
-    public function map(array $value)
+    public function map(array $values)
     {
         foreach ($values as $key => $value)
         {

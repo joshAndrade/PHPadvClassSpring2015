@@ -7,7 +7,7 @@
 
 namespace Lab3\models\services;
 
-use Lab\models\interfaces\ILogging; 
+use Lab3\models\interfaces\ILogging; 
 
 class FileLogging implements ILogging
 {

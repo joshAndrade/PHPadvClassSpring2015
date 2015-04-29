@@ -1,17 +1,20 @@
 <?php
+
 /**
  * Description of Validator
  *
- * @author 001270562
+ * @author GForti
  */
 
-namespace Lab3\models\services;
+namespace API\models\services;
 
-use Lab3\models\interfaces\IService;
+use API\models\interfaces\IService;
 
-class Validator implements IService
-{
-   /**
+class Validator implements IService {
+    
+    
+    
+    /**
      * A method to check if an email is valid.
      *
      * @param {String} [$email] - must be a valid email
@@ -30,7 +33,7 @@ class Validator implements IService
      * @return boolean
      */
     public function phoneIsValid($phone) {
-        return ( preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $phone) );
+        return ( preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $phone) );
     }
     
     /**
