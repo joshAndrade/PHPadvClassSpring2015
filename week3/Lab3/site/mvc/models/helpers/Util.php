@@ -57,7 +57,7 @@ class Util implements IService
     
     public function getPostValues()
     {
-        return filter_input_array(Input_POST);
+        return filter_input_array(INPUT_POST);
     }
     
     public function getAction()

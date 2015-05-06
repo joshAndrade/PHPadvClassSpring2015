@@ -43,10 +43,15 @@ class Config implements IService
             }
             else
             {
+                return $this->getData()[$section];
+            }
+        }
+            else
+            {
                 return $this->getData();
             }
             
             
         }
     }
-}
+

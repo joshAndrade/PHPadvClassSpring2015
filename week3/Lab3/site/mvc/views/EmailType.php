@@ -13,7 +13,7 @@
         {
             if(isset($scope->view['errors']) )
             {
-                print_r($scope0->view['errors']);
+                print_r($scope->view['errors']);
             }
             
             if(isset($scope->view['saved']) && $scope->view['saved'])
@@ -56,11 +56,12 @@
         }
         else
         {
-           echo 'table border="1" cellpadding="5"><tr><th>Email Type</th><th>Active</th><th></th><th></th></tr>'; 
-           foreach($scope->view['EmailTypes'] as $values)
+           echo '<table border="1" cellpadding="5"><tr><th>Email Type</th><th>Active</th><th></th><th></th></tr>'; 
+           foreach($scope->view['EmailTypes'] as $value)
            {
                echo '<tr>';
                echo '<td>', $value->getEmailtype(), '</td>';
+               echo '<td>', $value->getActive(), '</td>';
                echo '<td><form action="#" method="post"><input type="hidden" name="emailtypeid" value"',$value->getEmailtypeid(),'" /><input type="hidden" name="action" value="edit" /><input type="submit" value="EDIT" /> </form></td>';
                echo '<td><form action="#" method="post"><input type="hidden"  name="emailtypeid" value="',$value->getEmailtypeid(),'" /><input type="hidden" name="action" value="delete" /><input type="submit" value="DELETE" /> </form></td>';
                echo '</tr>';

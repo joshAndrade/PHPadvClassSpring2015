@@ -8,11 +8,11 @@
 
  namespace Lab3\models\interfaces;
 
-use Lab3\models\services\Scope;
+use Lab3\models\interfaces\IService;
 
 
 interface IController {
   
-    public function execute(Scope $scope);
+    public function execute(IService $scope);
 }
 

@@ -28,16 +28,15 @@ class DB implements IService
     private function getDbConfig() {
         return $this->dbConfig;
     }
-   
-   private function getLog() {
-       return $this->log;
-   }
-
 
    private function setDbConfig($dbConfig) {
        $this->dbConfig = $dbConfig;
    }
 
+   private function getLog() {
+       return $this->log;
+   }
+   
    private function setLog($log) {
        if($log instanceof ILogging)
        {

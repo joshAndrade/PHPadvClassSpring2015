@@ -8,14 +8,14 @@
 namespace Lab3\controller;
 
 use Lab3\models\interfaces\IController;
-use Lab3\models\services\Scope;
+use Lab3\models\interfaces\IService;
 
 class IndexController extends BaseController implements IController
 {
     public function __construct( )
     {}
     
-    public function execute(Scope $scope)
+    public function execute(IService $scope)
     {
         $this->data["cool"] = 'testing';
         $scope->view = $this->data;

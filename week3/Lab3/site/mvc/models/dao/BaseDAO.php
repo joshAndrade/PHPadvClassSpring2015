@@ -44,7 +44,7 @@ abstract class BaseDAO
         $this->model = $model;
     }
 
-    protected function setLog(ILogging8$log) 
+    protected function setLog(ILogging $log) 
     {
         if($log instanceof ILogging )
         {

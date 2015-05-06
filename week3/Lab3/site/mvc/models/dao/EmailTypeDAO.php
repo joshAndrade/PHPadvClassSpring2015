@@ -75,7 +75,7 @@ class EmailTypeDAO extends BaseDAO implements IDAO
         $db = $this->getDB();
         
         $binds = array("emailtypeid" => $model->getEmailTypeid(),
-                        "emailtype" => $model->getEmail(),
+                        "emailtype" => $model->getEmailType(),
                         "active" => $model->getActive()
                         );
         

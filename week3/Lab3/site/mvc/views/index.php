@@ -5,7 +5,7 @@
         <title></title>
     </head>
     <body>
-        cool
+        
         <?php
 
         var_dump($scope->view);

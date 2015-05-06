@@ -17,7 +17,7 @@ final class index
     protected $DI = array();
     protected $log = null;
     
-    public function getLog() {
+    protected function getLog() {
         return $this->log;
     }
 
@@ -98,7 +98,7 @@ final class index
             $this->getLog()->logException($ex->getMessage());
         }
         
-        //ASDFFFFFFFFFFFFFFSDFWAEEEEEEEEEEEEEEEEEEEEEF!!!!!!!!!!!!!!!!!!!!!!!!!!!!//$this->redirect('page404',array("error"=>$ex->getMessage()));
+        $this->redirect('page404',array("error"=>$ex->getMessage()));
     }
     
     /**
@@ -112,8 +112,9 @@ final class index
             $folders = array(   "mvc".DIRECTORY_SEPARATOR."controllers",
                                 "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."dao",
                                 "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."do",
-                                "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."interfaces",
                                 "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."exceptions",
+                                "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."helpers",
+                                "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."interfaces",
                                 "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."services"
                             );
             $classFile = FALSE;
@@ -198,7 +199,7 @@ function runPage()
     $_emailTypeService = new EmailTypeService($_emailTypeDAO, $_validator, $_emailTypeModel);
     
     
-    
+   
     $index->addDIController('index', function()
     {
         return new \Lab3\controller\IndexController();
@@ -210,7 +211,7 @@ function runPage()
     ;
     
     $index->run($_scope);
-    var_dump($_scope);
+    
 }
 
 runPage();

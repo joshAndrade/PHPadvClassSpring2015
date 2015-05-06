@@ -52,7 +52,7 @@ class EmailTypeService implements IService
     
     public function __construct( IDAO $EmailTypeDAO, IService $validator,IModel $model  ) 
     {
-        $this->DAO($EmailTypeDAO);
+        $this->setDAO($EmailTypeDAO);
         $this->setValidator($validator);
         $this->setModel($model);
     }
@@ -93,7 +93,7 @@ class EmailTypeService implements IService
     public function validate(IModel $model) 
     {
         $errors = array();
-        if(!$this->getValidator()->emailTypeIsValid($model->getEmaitype()))
+        if(!$this->getValidator()->emailTypeIsValid($model->getEmailtype()))
         {
             $errors[] = 'Email Type is invalid';
         }

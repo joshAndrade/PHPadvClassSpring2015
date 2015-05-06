@@ -1,5 +1,5 @@
 ;<?php
-;die(); // For further security
+;die(); 
 ;/*
 
 [db:dev]
