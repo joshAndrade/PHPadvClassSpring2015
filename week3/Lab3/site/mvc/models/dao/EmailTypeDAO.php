@@ -101,7 +101,7 @@ class EmailTypeDAO extends BaseDAO implements IDAO
     
     public function delete($id) {
         $db = $this->getDB();
-        $stmt = $db->prepare("Delete FROM emailtype WEHRE emailtypid = :emailtypid");
+        $stmt = $db->prepare("Delete FROM emailtype WHERE emailtypid = :emailtypid");
         
         if($stmt->execute(array(':emailtypeid' => $id)) && $stmt->rowCount() > 0)
         {

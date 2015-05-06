@@ -14,6 +14,7 @@ use Lab3\models\interfaces\IService;
 use Lab3\models\interfaces\IModel;
 
 
+
 class EmailTypeService implements IService
 {
     protected $DAO;
