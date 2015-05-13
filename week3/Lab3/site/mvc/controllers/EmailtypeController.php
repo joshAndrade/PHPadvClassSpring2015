@@ -54,6 +54,9 @@ class EmailtypeController extends BaseController implements IController
         {
             $this->data["deleted"] = $this->service->delete($scope->util->getPostParam('emailtypeid'));
         }
+        
+        
+        
     }
     
     $this->data['EmailTypes'] = $this->service->getAllRows();
