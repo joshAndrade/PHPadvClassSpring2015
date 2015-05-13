@@ -8,9 +8,6 @@
         
         <?php
 
-        var_dump($scope->view);
-        
-        
         ?>
         
         <a href="EmailType">Email Type</a>

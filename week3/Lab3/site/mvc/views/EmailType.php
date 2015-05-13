@@ -61,8 +61,8 @@
            {
                echo '<tr>';
                echo '<td>', $value->getEmailtype(), '</td>';
-               echo '<td>', $value->getActive(), '</td>';
-               echo '<td><form action="#" method="post"><input type="hidden" name="emailtypeid" value"',$value->getEmailtypeid(),'" /><input type="hidden" name="action" value="edit" /><input type="submit" value="EDIT" /> </form></td>';
+               echo '<td>',($value->getActive() == 1 ? 'Yes' : 'No'), '</td>';
+               echo '<td><form action="#" method="post"><input type="hidden" name="emailtypeid" value="',$value->getEmailtypeid(),'" /><input type="hidden" name="action" value="edit" /><input type="submit" value="EDIT" /> </form></td>';
                echo '<td><form action="#" method="post"><input type="hidden"  name="emailtypeid" value="',$value->getEmailtypeid(),'" /><input type="hidden" name="action" value="delete" /><input type="submit" value="DELETE" /> </form></td>';
                echo '</tr>';
            }

@@ -3189,3 +3189,5 @@
 [55496dde7c459]	[exception]	[05-06-15 3:26am]	Controller for page "Email" failed
 [554970130443a]	[exception]	[05-06-15 3:36am]	Controller for page "EmailTypeasdf" failed
 [5549784d516b8]	[exception]	[05-06-15 4:11am]	Controller for page "Email" failed
+[55528e2393449]	[exception]	[05-13-15 1:34am]	Controller for page "EmailTypeEdit" failed
+[5552975e064f8]	[exception]	[05-13-15 2:14am]	Controller for page "Email" failed

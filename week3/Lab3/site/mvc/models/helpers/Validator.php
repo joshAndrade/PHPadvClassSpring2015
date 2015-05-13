@@ -54,4 +54,15 @@ class Validator implements IService
     public function activeIsValid($type) {
         return ( is_string($type) && preg_match("/^[0-1]$/", $type) );
     }
+    
+    /**
+     * A method to check if a email type is valid.
+     *
+     * @param {String} [$type] - must be a valid string
+     *
+     * @return boolean
+     */
+    public function emailTypeIsValid($type) {
+        return ( is_string($type) && preg_match("/^[a-zA-Z]+$/", $type) );
+    }
 }

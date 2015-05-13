@@ -1,11 +1,10 @@
 <?php
-
-
 /**
- * Description of EmailTypeDAO
+ * Description of EmailDAO
  *
  * @author 001270562
  */
+
 namespace Lab3\models\services;
 
 use Lab3\models\interfaces\IDAO;
@@ -13,9 +12,9 @@ use Lab3\models\interfaces\IModel;
 use Lab3\models\interfaces\ILogging;
 use \PDO;
 
-class EmailTypeDAO extends BaseDAO implements IDAO
+class EmailDAO extends BaseDAO implements IDAO
 {
-    public function __construct(PDO $db, IModel $model, ILogging $log) {
+     public function __construct(PDO $db, IModel $model, ILogging $log) {
         $this->setDB($db);
         $this->setModel($model);
         $this->setLog($log);
@@ -24,9 +23,9 @@ class EmailTypeDAO extends BaseDAO implements IDAO
     protected function idExist($id)
     {
         $db = $this->getDB();
-        $stmt = $db->prepare("SELECT * FROM emailtype WHERE emailtypeid = :emailtypeid");
+        $stmt = $db->prepare("SELECT * FROM email WHERE emailid = :emailid");
         
-        if ($stmt->execute(array(':emailtypeid' => $id)) && $stmt->rowCount() > 0)
+        if ($stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0)
         {
              return true;
         }
@@ -38,9 +37,9 @@ class EmailTypeDAO extends BaseDAO implements IDAO
         $model = clone $this->getModel();
         $db = $this->getDB();
         
-        $stmt = $db->prepare("SELECT * FROM emailtype WHERE emailtypeid = :emailtypeid");
+        $stmt = $db->prepare("SELECT * FROM email WHERE emailid = :emailid");
         
-        if ($stmt->execute(array(':emailtypeid' => $id)) && $stmt->rowCount() > 0)
+        if ($stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0)
         {
                 $results = $stmt->fetch(PDO::FETCH_ASSOC);
                 $model->reset()->map($results);
@@ -59,7 +58,7 @@ class EmailTypeDAO extends BaseDAO implements IDAO
         
         if (!$this->idExist($model->getEmailTypeid()))
         {
-            $stmt = $db->prepare("INSERT INTO emailtype SET emailtype = :emailtype, active = :active ");
+            $stmt = $db->prepare("INSERT INTO email SET email = :email, emailtypeid = :emailtypeid, active = :active, logged = now(), lastupdated = now()");
             
             if ($stmt->execute($binds) && $stmt->rowCount() > 0)
             {
@@ -82,7 +81,7 @@ class EmailTypeDAO extends BaseDAO implements IDAO
         
         if($this->idExist($model->getEmailTypeid()))
         {
-            $stmt = $db->prepare("UPDATE emailtype SET emailtype = :emailtype, active = :active WHERE emailtypeid = :emailtypeid");
+            $stmt = $db->prepare("UPDATE email SET email = :email, emailtypeid = :emailtypeid, active = :active, lastupdated = now() WHERE emailid = :emailid");
             
             if ($stmt->execute($binds) && $stmt->rowcount() > 0)
             {
@@ -102,9 +101,9 @@ class EmailTypeDAO extends BaseDAO implements IDAO
     public function delete($id) 
     {
         $db = $this->getDB();
-        $stmt = $db->prepare("Delete FROM emailtype WHERE emailtypeid = :emailtypeid");
+        $stmt = $db->prepare("Delete FROM email WHERE emailid = :emailid");
                              
-        if($stmt->execute(array(':emailtypeid' => $id)) && $stmt->rowCount() > 0)
+        if($stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0)
         {
             return true;
             
@@ -123,7 +122,7 @@ class EmailTypeDAO extends BaseDAO implements IDAO
         $db = $this->getDB();
         $values = array();
         
-        $stmt = $db->prepare("SELECT * FROM emailtype");
+        $stmt = $db->prepare("SELECT email.emailid, email.email, email.emailtypeid, emailtype.emailtype, emailtype.active as emailtypeactive, email.logged, email.lastupdated, email.active FROM email LEFT JOIN emailtype on email.emailtypeid = emailtype.emailtypeid");
         
         if($stmt->execute() && $stmt->rowCount() > 0)
         {
@@ -139,5 +138,4 @@ class EmailTypeDAO extends BaseDAO implements IDAO
         $stmt->closeCursor();
         return $values;
     }
-    
 }

@@ -198,7 +198,9 @@ function runPage()
     $_emailTypeDAO = new EmailTypeDAO($_pdo->getDB(), $_emailTypeModel, $_log);
     $_emailTypeService = new EmailTypeService($_emailTypeDAO, $_validator, $_emailTypeModel);
     
-    
+    $_emailModel = new EmailModel();
+    $_emailDAO = new EmailDAO($_pdo->getDB(), $_emailModel, $_log);
+    $_emailService = new EmailService($_emailDAO, $_validator, $_emailModel);
    
     $index->addDIController('index', function()
     {
@@ -207,8 +209,11 @@ function runPage()
     ->addDIController('EmailType', function() use ($_emailTypeService)
     {return new \Lab3\controller\EmailtypeController($_emailTypeService);
     })
-    
+    ->addDIController('Email', function() use($_emailService)
+    {return new \Lab3\controller\EmailController($_emailService);
+    })
     ;
+    
     
     $index->run($_scope);
     
