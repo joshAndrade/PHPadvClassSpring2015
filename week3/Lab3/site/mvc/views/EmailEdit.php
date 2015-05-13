@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <meta charset="UTF-8">
@@ -7,34 +6,10 @@
     </head>
     <body>
         <?php
-            if($scope->util->isPostRequest())
-        {
-            if(isset($scope->view['errors']) )
-            {
-                print_r($scope->view['errors']);
-            }
-            
-            if(isset($scope->view['saved']) && $scope->view['saved'])
-            {
-                echo 'Email added';
-            }
-            
-            if(isset($scope->view['deleted']) && $scope->view['deleted'])
-            {
-                echo 'Email deleted';
-            }
-        }
         
-        $email = $scope->view['model']->getEmail();
-        $active = $scope->view['model']->getActive();
-        $emailTypeid = $scope->view['model']->getEmailtypeid();
-        
-        $emailTypes = $scope->view['EmailTypes'];
-        
-       
         ?>
         
-        <h3>Add Email</h3>
+        <h3>Update Email</h3>
         <form action="#" method="post">
             <label>Email:</label> 
             <input type="text" name="email" value="<?php echo $email; ?>" placeholder="" />
@@ -93,8 +68,6 @@
            }
            echo '</table>';
         }
-        
-            
-            ?>
+        ?>
     </body>
 </html>
