@@ -91,6 +91,11 @@ class EmailTypeService implements IService
         return false;
     }
     
+    public function idExists($id)
+    {
+        return $this->getDAO()->idExist($id);
+    }
+    
     public function validate(IModel $model) 
     {
         $errors = array();

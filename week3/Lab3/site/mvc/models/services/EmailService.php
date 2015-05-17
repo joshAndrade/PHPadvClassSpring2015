@@ -109,19 +109,19 @@ class EmailService implements IService
         {
             $errors[] = 'Email is invalid';
         }
-        if(!$this->getValidator()->emailTypeIsValid($model->getEmailtypeid()))
-        {
-            $errors[] = 'Email type is invalid';
-        }
         if (!$this->getValidator()->activeIsValid($model->getActive()))
         {
             $errors[] = 'Active is invalid';
+        }
+        if(!$this->getEmailTypeService()->idExists($model->getEmailTypeid()))
+        {
+            $errors[] = "Email type is invalid.";
         }
         
         return $errors;
     }
     
-    public function getNewEmailTypeModel()
+    public function getNewEmailModel()
     {
         return clone $this->getModel();
     }

@@ -21,7 +21,7 @@ class EmailTypeDAO extends BaseDAO implements IDAO
         $this->setLog($log);
     }
     
-    protected function idExist($id)
+    public function idExist($id)
     {
         $db = $this->getDB();
         $stmt = $db->prepare("SELECT * FROM emailtype WHERE emailtypeid = :emailtypeid");
@@ -74,9 +74,9 @@ class EmailTypeDAO extends BaseDAO implements IDAO
     {
         $db = $this->getDB();
         
-        $binds = array("emailtypeid" => $model->getEmailTypeid(),
-                        "emailtype" => $model->getEmailType(),
-                        "active" => $model->getActive()
+        $binds = array(":emailtypeid" => $model->getEmailtypeid(),
+                        ":emailtype" => $model->getEmailtype(),
+                        ":active" => $model->getActive()
                         );
         
         

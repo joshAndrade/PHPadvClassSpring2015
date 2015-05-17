@@ -18,7 +18,7 @@ class EmailController extends BaseController implements IController
     
     public function execute(IService $scope) 
     {
-      $this->data['model'] = $this->service->getNewEmailTypeModel();
+      $this->data['model'] = $this->service->getNewEmailModel();
       $this->data['model']->reset();
       $viewPage = 'email';
     
@@ -43,12 +43,12 @@ class EmailController extends BaseController implements IController
         if($scope->util->getAction() == 'edit')
         {
             $viewPage .= 'edit';
-            $this->data['model'] = $this->service->read($scope->util->getPostParam('emailtypeid'));
+            $this->data['model'] = $this->service->read($scope->util->getPostParam('emailid'));
         }
         
         if($scope->util->getAction() == 'delete')
         {
-            $this->data["deleted"] = $this->service->delete($scope->util->getPostParam('emailtypeid'));
+            $this->data["deleted"] = $this->service->delete($scope->util->getPostParam('emailid'));
         }
         
         

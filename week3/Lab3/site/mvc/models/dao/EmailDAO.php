@@ -52,8 +52,9 @@ class EmailDAO extends BaseDAO implements IDAO
     {
         $db = $this->getDB();
         
-        $binds = array(":emailtype" => $model->getEmailtype(),
-                            ":active" => $model->getActive()
+        $binds = array(":email" => $model->getEmail(),
+                        ":emailtypeid" => $model->getEmailtypeid(),
+                        ":active" => $model->getActive()
                         );
         
         if (!$this->idExist($model->getEmailTypeid()))
@@ -73,13 +74,15 @@ class EmailDAO extends BaseDAO implements IDAO
     {
         $db = $this->getDB();
         
-        $binds = array("emailtypeid" => $model->getEmailTypeid(),
-                        "emailtype" => $model->getEmailType(),
-                        "active" => $model->getActive()
+        $binds = array(":emailtypeid" => $model->getEmailtypeid(),
+                        ":email" => $model->getEmail(),
+                        ":active" => $model->getActive(),
+                        ":emailid" => $model->getEmailid()
+                
                         );
         
         
-        if($this->idExist($model->getEmailTypeid()))
+        if($this->idExist($model->getEmailid()))
         {
             $stmt = $db->prepare("UPDATE email SET email = :email, emailtypeid = :emailtypeid, active = :active, lastupdated = now() WHERE emailid = :emailid");
             

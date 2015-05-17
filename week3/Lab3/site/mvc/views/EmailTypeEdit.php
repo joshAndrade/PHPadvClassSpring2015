@@ -23,6 +23,8 @@
         $active = $scope->view['model']->getActive();
         $emailTypeid = $scope->view['model']->getEmailtypeid();
         
+        
+        echo $emailTypeid
         ?>
         
         <h3>Update Email type</h3>
