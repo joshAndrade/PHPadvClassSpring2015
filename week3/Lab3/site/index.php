@@ -200,7 +200,7 @@ function runPage()
     
     $_emailModel = new EmailModel();
     $_emailDAO = new EmailDAO($_pdo->getDB(), $_emailModel, $_log);
-    $_emailService = new EmailService($_emailDAO, $_validator, $_emailModel);
+    $_emailService = new EmailService($_emailDAO, $_validator, $_emailModel, $_emailTypeService);
    
     $index->addDIController('index', function()
     {

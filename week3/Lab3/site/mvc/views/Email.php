@@ -29,7 +29,7 @@
         $active = $scope->view['model']->getActive();
         $emailTypeid = $scope->view['model']->getEmailtypeid();
         
-       
+       $emailTypes = $scope->view['EmailTypes'];
         
        
         ?>
@@ -45,7 +45,7 @@
             <label>Email:</label>
             <select name="emailtype">
                 <?php
-                    foreach($scope->view['EmailTypes'] as $value)
+                    foreach( $emailTypes as $value)
                     {
                         if($value->getEmailtypeid() == $emailTypeid)
                         {

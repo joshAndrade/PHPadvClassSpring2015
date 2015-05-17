@@ -15,6 +15,7 @@ class EmailService implements IService
     protected $DAO;
     protected $validator;
     protected  $model;
+    protected $emailTypeService;
             
     function getValidator()
     {
@@ -44,13 +45,21 @@ class EmailService implements IService
         $this->model = $model;
     }
 
+    function getEmailTypeService() {
+        return $this->emailTypeService;
+    }
+      
+    function setEmailTypeService(IService $service) {
+        $this->emailTypeService = $service;
+    }
+
         
-    
-    public function __construct( IDAO $EmailDAO, IService $validator,IModel $model  ) 
+    public function __construct( IDAO $EmailDAO, IService $validator,IModel $model, IService $emailTypeService) 
     {
         $this->setDAO($EmailDAO);
         $this->setValidator($validator);
         $this->setModel($model);
+        $this->setEmailTypeService($emailTypeService);
     }
     
     public function getAllRows($limit = "", $offset = "")
@@ -86,6 +95,13 @@ class EmailService implements IService
         return false;
     }
     
+    public function getEmailTypes()
+    {
+        return $this->getEmailTypeService()->getAllRows();
+    }
+
+    
+
     public function validate(IModel $model) 
     {
         $errors = array();
