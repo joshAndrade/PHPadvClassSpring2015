@@ -1,15 +1,14 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author 001270562
  */
+
+namespace Lab5\models\interfaces;
 interface IRequest {
-    //put your code here
+   
+    public function POST(IModel $model);
+    public function GET(IModel $model);
+    public function PUT(IModel $model);
+    public function DELETE(IModel $model);
 }

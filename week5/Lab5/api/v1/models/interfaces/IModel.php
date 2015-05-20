@@ -10,6 +10,11 @@
  *
  * @author 001270562
  */
-interface IModel {
-    //put your code here
+namespace Lab5\models\interfaces;
+
+interface IModel 
+{
+    public function reset();
+    public function map(array $values);
+    public function getAllPropteries();
 }
