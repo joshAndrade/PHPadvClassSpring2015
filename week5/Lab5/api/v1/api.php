@@ -75,7 +75,7 @@ final class Index {
     //http://php.net/manual/en/functions.anonymous.php
 
     $_restServer->addDIResourceRequest('emailtypes', function() use ($_emailTypeService ) {       
-        return new EmailtypeRequest($_emailTypeService);
+        return new EmailTypeRequest($_emailTypeService);
     })    
     ->addDIResourceRequest('emails', function() use ($_emailService ) {       
         return new EmailRequest($_emailService);

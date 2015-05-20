@@ -54,7 +54,7 @@ class EmailService implements IService
     }
 
         
-    public function __construct( IDAO $EmailDAO, IService $validator,IModel $model, IService $emailTypeService) 
+    public function __construct( IDAO $EmailDAO, IService $emailTypeService, IService $validator,  IModel $model) 
     {
         $this->setDAO($EmailDAO);
         $this->setValidator($validator);
