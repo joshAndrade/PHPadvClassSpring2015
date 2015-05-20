@@ -13,12 +13,3 @@
 [5540078a84be0]	[exception]	[04-29-2015 12:19am]	Invalid credentials
 [55400ce778084]	[exception]	[04-29-2015 12:42am]	New Phone Type Not Created
 [55400f32794d4]	[exception]	[04-29-2015 12:52am]	Invalid credentials
-[555bd322aab62]	[exception]	[05-20-2015 2:19am]	New Phone Not Created
-[555bd32e21a9f]	[exception]	[05-20-2015 2:19am]	New Phone Not Created
-[555bd34a66bf2]	[exception]	[05-20-2015 2:20am]	0 ID does not exist
-[555bd35db4b9a]	[exception]	[05-20-2015 2:20am]	0 ID does not exist
-[555bd35ebd1da]	[exception]	[05-20-2015 2:20am]	0 ID does not exist
-[555bd35f1a840]	[exception]	[05-20-2015 2:20am]	0 ID does not exist
-[555bd35f47313]	[exception]	[05-20-2015 2:20am]	0 ID does not exist
-[555bd35f6cfbf]	[exception]	[05-20-2015 2:20am]	0 ID does not exist
-[555bd3668f0b9]	[exception]	[05-20-2015 2:20am]	0 ID does not exist
