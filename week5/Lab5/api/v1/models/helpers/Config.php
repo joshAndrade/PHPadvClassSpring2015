@@ -41,7 +41,7 @@ class Config implements IService
     {
         if(NULL != $section && is_array($this->getData()) && array_key_exists($section, $this->getData()))
         {
-            if(NULL !== $name && is_array($this->getData()[$section]) && array_key_exists($name, $this-getData()[$section]))
+            if(NULL !== $name && is_array($this->getData()[$section]) && array_key_exists($name, $this->getData()[$section]))
             {
                 return $this->getData()[$section][$name];
             }

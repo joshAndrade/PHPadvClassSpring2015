@@ -23,7 +23,7 @@ class EmailDAO extends BaseDAO implements IDAO
     protected function idExist($id)
     {
         $db = $this->getDB();
-        $stmt = $db->prepare("SELECT * FROM email WHERE emailid = :emailid");
+        $stmt = $db->prepare("SELECT emailid FROM email WHERE emailid = :emailid");
         
         if ($stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0)
         {

@@ -55,7 +55,7 @@
 
                 var xmlhttp = new XMLHttpRequest();
 
-                var url = 'proxyAPI.php?resource=' + resource;
+                var url = 'ProxyAPI.php?resource=' + resource;
 
                 xmlhttp.open(verb, url, true);
 
