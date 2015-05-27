@@ -1,0 +1,30 @@
+/* 
+    Created on : May 26, 2015, 7:56:29 PM
+    Author     : 001270562
+*/
+#header{
+    border: 1px solid red;
+}
+
+#nav{
+    border: 1px solid blue;
+    height: 30px;
+    width: 50%;
+}
+
+#main{
+    border: 1px solid pink;
+    width: 90%;
+    float: right;
+    padding-bottom: 100%;
+    margin-bottom: -100%;
+}
+
+#sidebar{
+    border: 1px solid black;
+    width: 9.9%;
+    padding-bottom: 100%;
+    margin-bottom: -100%;
+}
+
+
