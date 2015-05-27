@@ -10,12 +10,7 @@ body{
 #header{
      background-color: red;
 }
-
-#login{
-    float: right;
-    
-}
-
+   
 #nav{
      background-color: yellow;
     height: 30px;
