@@ -2,29 +2,42 @@
     Created on : May 26, 2015, 7:56:29 PM
     Author     : 001270562
 */
+
+body{
+    background-color: tan;
+}
+
 #header{
-    border: 1px solid red;
+     background-color: red;
+}
+
+#login{
+    float: right;
+    
 }
 
 #nav{
-    border: 1px solid blue;
+     background-color: yellow;
     height: 30px;
     width: 50%;
 }
 
 #main{
-    border: 1px solid pink;
+     background-color: pink;
     width: 90%;
     float: right;
-    padding-bottom: 100%;
-    margin-bottom: -100%;
+    height: 350px;
 }
 
 #sidebar{
-    border: 1px solid black;
+     background-color: purple;
     width: 9.9%;
-    padding-bottom: 100%;
-    margin-bottom: -100%;
+    height: 350px;
+}
+
+#footer{
+     background-color: teal;
+    float: bottom;
 }
 
 

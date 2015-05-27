@@ -8,11 +8,14 @@
     <body>
         <div id="header">
             
-            <h1>Header</h1> 
+            <h1>Header</h1>
             
+            <div id="login">
+            <a href="Register.php">Register</a> &nbsp <a href="Login.php">Login</a>
+            </div>
             <div id="nav">
                
-                 Nav
+                <a href="TakeSurvey.php">Survey</a> 
             
             </div><!-- end nav-->
             
@@ -20,20 +23,24 @@
         </div><!-- end header-->
         
         
-        <div id="main" class="content">
+        <div id="main">
             
             Main
     
         </div><!-- end main-->
         
-        <div id="sidebar" class="content">
+        <div id="sidebar">
             
             SideBar
-            
-            
-            
-            
+              
         </div>
+        
+        <div id="footer">
+            
+            Footer
+            
+        </div> 
+        
         <?php
         
         ?>
