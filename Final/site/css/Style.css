@@ -4,6 +4,7 @@ body{
 }
 
 #header{
+    border-radius:5px;
      background-color:lawngreen;
 }
    
@@ -26,20 +27,23 @@ body{
     border:solid black 1px;
     width:90%;
     float:right;
-    height:350px;
+    height:600px;
 }
 
 #sidebar{
     border-radius:25px;
     background-color:blue;
     width:9.9%;
-    height:350px;
+    height:600px;
     color:white;
-    floar:left;
 }
 
 #footer{
-     background-color:orange; 
+    border-radius:5px;
+    background-color:darkorange;
+    position: relative;
+    top: 3px;
+    height: 50px;
 }
 
 #logAndReg{

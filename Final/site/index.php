@@ -9,7 +9,7 @@
     <body>
         <div id="header">
             
-            <h1>Header</h1>
+            <h1>Welcome!</h1>
             <div id="user">
              <?php 
             $util = new Util();
@@ -45,7 +45,7 @@
         
         <div id="footer">
             
-            <p>Footer<p/>
+            Footer
             
         </div> 
         

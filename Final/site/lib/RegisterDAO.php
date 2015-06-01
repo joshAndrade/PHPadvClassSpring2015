@@ -59,7 +59,7 @@ class RegisterDAO
            );
        
        $stmt = $db->prepare("INSERT INTO login SET UserName = :user, PassWord = :password, created = now()");
-       var_dump($model->getUser());
+       
        if($stmt->execute($binds) && $stmt->rowCount() > 0)
        {
            return true;
