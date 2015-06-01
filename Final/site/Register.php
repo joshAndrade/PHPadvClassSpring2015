@@ -33,7 +33,7 @@
             
             
         ?>
-        
+        <div id="logAndReg">
         <h1>Create Account</h1>
         <form action="#" method="POST">
             
@@ -44,7 +44,7 @@
             <input type="submit" value="Register" />
             
         </form>
-        <a href="index.php">Back to Home.</a>
-        
+        &nbsp&nbsp<a href="index.php">Back to Home.</a>
+        </div>
     </body>
 </html>

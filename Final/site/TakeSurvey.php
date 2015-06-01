@@ -8,17 +8,21 @@
     </head>
     <body>
         
-        <?php 
+        
+       
+        <div id="header">
+            
+            <h1>Survey</h1>
+            <div id="user">
+            <?php 
             $util = new Util();
             if ( !$util->isLoggedin() ) {
                 $util->redirect("Login.php");
             } else {
-                echo '<h2>Logged in</h2>';
+                echo' <a href="?logout">Logout</a>';
             }
         ?>
-        <div id="header">
-            
-            <h1>Survey</h1>
+            </div> <!-- end user-->
             
             <div id="nav">
                
@@ -32,19 +36,19 @@
         
         <div id="main">
             
-            Main
+            <p>Main</p>
     
         </div><!-- end main-->
         
         <div id="sidebar">
-            
-            SideBar
+            <br />
+            <p>SideBar</p>
               
         </div>
         
         <div id="footer">
             
-            Footer
+            <p>Footer</p>
             
         </div> 
         

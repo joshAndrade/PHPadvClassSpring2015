@@ -1,3 +1,4 @@
+<?php include './bootstrap.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,9 +10,16 @@
         <div id="header">
             
             <h1>Header</h1>
-            
-            
-            <a href="Register.php">Register</a> &nbsp <a href="Login.php">Login</a>
+            <div id="user">
+             <?php 
+            $util = new Util();
+            if ( !$util->isLoggedin() ) {
+                echo'<a href="Register.php">Register</a> &nbsp <a href="Login.php">Login</a>';
+            } else {
+                echo' <a href="?logout">Logout</a>';
+            }
+        ?>
+            </div>
             
             <div id="nav">
                
@@ -25,19 +33,19 @@
         
         <div id="main">
             
-            Main
+            <p> Main</p>
     
         </div><!-- end main-->
         
         <div id="sidebar">
-            
-            SideBar
+            <br />
+            <p>SideBar</p>
               
         </div>
         
         <div id="footer">
             
-            Footer
+            <p>Footer<p/>
             
         </div> 
         

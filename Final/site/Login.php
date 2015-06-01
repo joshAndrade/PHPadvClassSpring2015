@@ -33,16 +33,17 @@
         
         
         ?>
-        
+        <div id="logAndReg">
         <h1>Login</h1>
         <form action="#" method="POST">
             
-            User Name : <input type="text" name="user" value="" /> <br />
-            Password : <input type="password" name="password" value="" /> <br /> 
+           User Name : <input type="text" name="user" value="" /> <br />
+           Password : <input type="password" name="password" value="" /> <br /> 
             <br />
             <input type="submit" value="Login" />
             
         </form>
-        
+        &nbsp&nbsp<a href="index.php">Back to Home.</a>
+        </div>
     </body>
 </html>
