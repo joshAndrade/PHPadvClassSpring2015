@@ -1,38 +1,33 @@
-/* 
-    Created on : May 26, 2015, 7:56:29 PM
-    Author     : 001270562
-*/
 
 body{
-    background-color: tan;
+    background-color:tan;
 }
 
 #header{
-     background-color: red;
+     background-color:red;
 }
    
 #nav{
-     background-color: yellow;
-    height: 30px;
-    width: 50%;
+     background-color:yellow;
+    height:30px;
+    width:50%;
 }
 
 #main{
-     background-color: pink;
-    width: 90%;
-    float: right;
-    height: 350px;
+     background-color:pink;
+    width:90%;
+    float:right;
+    height:350px;
 }
 
 #sidebar{
-     background-color: purple;
-    width: 9.9%;
-    height: 350px;
+     background-color:purple;
+    width:9.9%;
+    height:350px;
 }
 
 #footer{
-     background-color: teal;
-    float: bottom;
+     background-color:teal; 
 }
 
 

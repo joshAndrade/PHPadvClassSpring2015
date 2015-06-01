@@ -35,7 +35,8 @@ class SignupDAO {
         $stmt = $db->prepare("SELECT * FROM signup WHERE email = :email");
 
         if ( $stmt->execute(array(':email' => $email)) && $stmt->rowCount() > 0 ) {            
-            $results = $stmt->fetch(PDO::FETCH_ASSOC);            
+            $results = $stmt->fetch(PDO::FETCH_ASSOC); 
+            var_dump(password_verify($password, $results['password']));
             return password_verify($password, $results['password']);            
         }
          
