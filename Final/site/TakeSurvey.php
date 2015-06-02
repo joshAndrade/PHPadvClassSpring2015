@@ -9,21 +9,9 @@ include './bootstrap.php'; ?>
         <title></title>
     </head>
     <body>
-        
-        
-       
-        <div id="header">
-            
-            <h1>Survey</h1>
-            <div id="user">
-            <?php 
+        <div id="errors">
+        <?php
             $util = new Util();
-            if ( !$util->isLoggedin() ) {
-                $util->redirect("Login.php");
-            } else {
-                echo' <a href="?logout">Logout</a>';
-            }
-            
             $pdo = new DB($dbConfig);
             $db = $pdo->getDB();
             
@@ -35,14 +23,39 @@ include './bootstrap.php'; ?>
             $last = filter_input(INPUT_POST, 'last');
             $gender = filter_input(INPUT_POST, 'gender');
             $city = filter_input(INPUT_POST, 'city');
-            $state = filter_input(INPUT_POST, $)
+            $state = filter_input(INPUT_POST, 'state');
+            $sport = filter_input(INPUT_POST, 'sport');
+            $music = filter_input(INPUT_POST, 'music');
             
             $surveyModel = new SurveyModel();
             $surveyModel->setFirst($first);
             $surveyModel->setLast($last);
             $surveyModel->setGender($gender);
+            $surveyModel->setCity($city);
+            $surveyModel->setState($state);
+            $surveyModel->setFavsport($sport);
+            $surveyModel->setFavmusic($music);
+         
+            $surveyService = new SurveyService($db, $util, $validator, $surveyDAO, $surveyModel);
             
-        ?>
+            $surveyService->saveForm();
+            ?>
+                </div><!--end errors-->
+       
+        <div id="header">
+            
+            <h1>Survey</h1>
+            <div id="user">
+                
+            <?php 
+            
+            if ( !$util->isLoggedin() ) {
+                $util->redirect("Login.php");
+            } else {
+                echo' <a href="?logout">Logout</a>';
+            }
+            ?>
+                    
             </div> <!-- end user-->
             
             <div id="nav">
@@ -151,7 +164,8 @@ include './bootstrap.php'; ?>
                <input type="radio" name="music" value="rap" />Rap
                <input type="radio" name="music" value="rock" />Rock
                <input type="radio" name="music" value="other" />Other
-                
+               <br />
+               <br />
                <input type="submit" value="Submit" />
             </form>
     

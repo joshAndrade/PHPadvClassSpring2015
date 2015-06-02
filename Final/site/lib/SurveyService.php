@@ -1,5 +1,7 @@
 <?php
+
 namespace finalProject\JAndrade;
+use PDO;
 /**
  * Description of SurveyService
  *
@@ -19,8 +21,8 @@ class SurveyService
         $this->_DB = $db;    
         $this->_Util = $util;
         $this->_Validator = $validator;
-        $this->_PhoneTypeDAO = $surveyDAO;
-        $this->_PhoneTypeModel = $surveyModel;
+        $this->_SurveyDAO = $surveyDAO;
+        $this->_SurveyModel = $surveyModel;
     }
     
     public function saveForm()
@@ -100,30 +102,42 @@ class SurveyService
     
     public function displayResults()
     {
-        $surveyDAO = new SurveyDAO();
-        $results = $surveyDAO->getAllRows();
+       $stmt= $this->_DB->prepare("SELECT * FROM survey"); 
+        
+        if ($stmt->execute() && $stmt->rowCount() > 0)
+        {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
         
         foreach ($results as $values)
         {
-            echo '<tr><td>',$values->getFirst() . " " . $values->getLast(),'</td><td>',$values->getGender(),'</td>';
-            echo '<td>',$values->getCity(),'</td><td>', $values->getState(),'</td><td>',$values->getFavsport(),'</td><td>',$values->getFavmusic(),'</td></tr>';
+            echo '<tr><td>',$values['First'] . " " . $values['Last'],'</td><td>',$values['Gender'],'</td>';
+            echo '<td>',$values['City'],'</td><td>', $values['State'],'</td><td>',$values['FavSport'],'</td><td>',$values['FavMusic'],'</td></tr>';
         }
+    }
     }
     
     public function adminDisplayResults()
     {
         
-        $surveyDAO = new SurveyDAO();
-        $results = $surveyDAO->getAllRows();
         
+        
+        $stmt= $this->_DB->prepare("SELECT * FROM survey"); 
+        
+        if ($stmt->execute() && $stmt->rowCount() > 0)
+        {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+         
         foreach ($results as $values)
         {
-            echo '<tr><td>',$values->getFirst() . " " . $values->getLast(),'</td><td>',$values->getGender(),'</td>';
-            echo '<td>',$values->getCity(),'</td><td>', $values->getState(),'</td><td>',$values->getFavsport(),'</td><td>',$values->getFavmusic(),'</td>';
-            echo '<td><form action="#" method="post"><input type="hidden"  name="surveyid" value="',$values->getSurveyid(),'" /><input type="hidden" name="action" value="',$surveyDAO->delete(filter_input(INPUT_POST, 'surveyid')),'" /><input type="submit" value="DELETE" /> </form></td>';
+            
+            echo '<tr><td>',$values['First'] . " " . $values['Last'],'</td><td>',$values['Gender'],'</td>';
+            echo '<td>',$values['City'],'</td><td>', $values['State'],'</td><td>',$values['FavSport'],'</td><td>',$values['FavSport'],'</td>';
+            //echo '<td><form action="#" method="post"><input type="hidden"  name="surveyid" value="',$values['SurveyID'],'" /><input type="hidden" name="action" value="',$surveyDAO->delete(filter_input(INPUT_POST, 'surveyid')),'" /><input type="submit" value="DELETE" /> </form></td>';
             echo '</tr>';
         }
         
     }
-    
+    }
 }

@@ -10,7 +10,7 @@ interface IModel {
      * 
      * 
      */
-    public function resest();
+    public function reset();
     
     /**
      * 

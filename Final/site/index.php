@@ -33,13 +33,36 @@ include './bootstrap.php'; ?>
         </div><!-- end header-->
         
         
-        <div id="main">
+        <div id="survey">
             
-            <p> Main</p>
-    
+            <p>Below are the results of the Survey.</p>
+            <br />
+            <br />
+            <br />
+            
+            <table border="1" cellpadding="5"><tr><th>Name</th><th>Gender</th><th>City</th><th>State</th><th>Favorite Sport</th><th>Favorite Music Genre</th></tr>
+            
+                
+                <?php  
+                
+                $pdo = new DB($dbConfig);
+                $db = $pdo->getDB();
+            
+            
+                $validator = new Validator();
+                $surveyDAO = new SurveyDAO($db);
+                $surveyModel = new SurveyModel();
+                
+                
+                $surveyService = new SurveyService($db, $util, $validator, $surveyDAO, $surveyModel);
+                $surveyService->displayResults();
+                ?>
+                
+            </table>
+            
         </div><!-- end main-->
         
-        <div id="sidebar">
+        <div id="surveySidebar">
             <br />
             <p>SideBar</p>
               

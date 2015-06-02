@@ -15,9 +15,16 @@ body{
     right:10px;
     
 }
+
+#errors{
+    position: fixed;
+    top:135px;
+    left:450px;
+}
+
 #nav{
     border-radius:5px;
-     background-color:yellow;
+    background-color:yellow;
     height:30px;
     width:50%;
 }
@@ -30,6 +37,14 @@ body{
     height:600px;
 }
 
+#survey{
+    border-radius:25px;
+    border:solid black 1px;
+    width:90%;
+    float:right;
+    height:1000px;
+}
+
 #sidebar{
     border-radius:25px;
     background-color:blue;
@@ -38,8 +53,18 @@ body{
     color:white;
 }
 
+#surveySidebar{
+    border-radius:25px;
+    background-color:blue;
+    width:9.9%;
+    height:1000px;
+    color:white;
+    
+}
+
 #footer{
     border-radius:5px;
+    border:solid black 1px;
     background-color:darkorange;
     position: relative;
     top: 3px;
