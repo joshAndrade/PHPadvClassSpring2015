@@ -92,51 +92,46 @@ class SurveyModel implements IModel
         $this->setFavmusic('');
     }
     
-    public function map(array $values)
+    public function map(Array $values)
     {
-        if(array_key_exists('surveyid', $values))
+        if(array_key_exists('SurveyID', $values))
         {
-            $this->setEmailid($values['SurveyID']);
+            $this->setSurveyid($values['SurveyID']);
         }
         
-        if(array_key_exists('first', $values))
+        if(array_key_exists('First', $values))
         {
-            $this->setEmailid($values['First']);
+            $this->setFirst($values['First']);
         }
         
-        if(array_key_exists('last', $values))
+        if(array_key_exists('Last', $values))
         {
-            $this->setEmailid($values['Last']);
+            $this->setLast($values['Last']);
         }
         
-        if(array_key_exists('last', $values))
+        if(array_key_exists('Gender', $values))
         {
-            $this->setEmailid($values['Last']);
+            $this->setGender($values['Gender']);
         }
         
-        if(array_key_exists('gender', $values))
+        if(array_key_exists('City', $values))
         {
-            $this->setEmailid($values['Gender']);
+            $this->setCity($values['City']);
         }
         
-        if(array_key_exists('city', $values))
+        if(array_key_exists('State', $values))
         {
-            $this->setEmailid($values['City']);
+            $this->setState($values['State']);
         }
         
-        if(array_key_exists('state', $values))
+        if(array_key_exists('FavSport', $values))
         {
-            $this->setEmailid($values['State']);
+            $this->setFavsport($values['FavSport']);
         }
         
-        if(array_key_exists('sport', $values))
+        if(array_key_exists('FavMusic', $values))
         {
-            $this->setEmailid($values['FavSport']);
-        }
-        
-        if(array_key_exists('music', $values))
-        {
-            $this->setEmailid($values['FavMusic']);
+            $this->setFavmusic($values['FavMusic']);
         }
         
         return $this;

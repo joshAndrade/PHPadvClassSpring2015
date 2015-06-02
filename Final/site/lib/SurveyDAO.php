@@ -26,9 +26,9 @@ class SurveyDAO implements IDAO
     public function idExist($id) 
     {
         $db = $this->getDB();
-        $stmt = $db->prepare("SELECT SurveyID FROM survey WHERE SurveyID = :surveyID");
+        $stmt = $db->prepare("SELECT SurveyID FROM survey WHERE SurveyID = :surveyid");
         
-        if($stmt->execute(array(':surveyID' => $id)) && $stmt->rowCount() > 0 ) 
+        if($stmt->execute(array(':surveyid' => $id)) && $stmt->rowCount() > 0 ) 
         {
             return true;
         }
@@ -37,16 +37,19 @@ class SurveyDAO implements IDAO
     
     public function getById($id) 
     {
-        $model = new EmailModel();
+        $model = new SurveyModel();
         $db = $this->getDB();
         
-        $stmt = $db->prepare("SELECT * FROM survey WHERE SurveyID = :surveyID"); 
+        $stmt = $db->prepare("SELECT * FROM survey WHERE SurveyID = :surveyid"); 
         
-        if($stmt->execute(array(':surveyID' => $id)) && $stmt->rowCount() > 0 )
+        if($stmt->execute(array(':surveyid' => $id)) && $stmt->rowCount() > 0 )
         {
+            
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $model->map($results);
+            
         }
+        
         return $model;
     }
     
@@ -63,7 +66,16 @@ class SurveyDAO implements IDAO
                             ":favmusic" => $model->getFavmusic()
                     );
             
+            if($this->idExist($model->getSurveyid()))
+            {
+                $values[":surveyid"] = $model->getSurveyid();
+                $stmt = $db->prepare("UPDATE survey SET First = :first, Last = :last, Gender = :gender, City = :city, State = :state, FavSport = :favsport, FavMusic = :favmusic WHERE SurveyID = :surveyid");
+            }
+            else
+                {
+            
             $stmt = $db->prepare("INSERT INTO survey SET First = :first, Last = :last, Gender = :gender, City = :city, State = :state, FavSport = :favsport, FavMusic = :favmusic");
+                }
             
             if ($stmt->execute($values) && $stmt->rowCount() > 0)
             {
@@ -80,6 +92,7 @@ class SurveyDAO implements IDAO
         
         if($stmt->execute(array(':surveyid' => $id)) && $stmt->rowCount() > 0)
         {
+           
             return true;
         }
         return false;

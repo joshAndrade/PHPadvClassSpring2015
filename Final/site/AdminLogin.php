@@ -7,7 +7,7 @@ include './bootstrap.php'; ?>
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="./css/Style.css">
-        <title>Login</title>
+        <title>Admin Login</title>
     </head>
     <body>
         <?php
@@ -25,7 +25,7 @@ include './bootstrap.php'; ?>
             {
                 echo 'Now logged in.';
                 $util->setLoggedin(true);
-                $util->redirect('index.php');
+                $util->redirect('adminhome.php');
             }
             else
             {
@@ -36,7 +36,7 @@ include './bootstrap.php'; ?>
         
         ?>
         <div id="logAndReg">
-        <h1>Login</h1>
+        <h1>Admin Login</h1>
         <form action="#" method="POST">
             
            User Name : <input type="text" name="user" value="" /> <br />

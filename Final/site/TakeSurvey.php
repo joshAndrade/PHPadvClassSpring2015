@@ -6,7 +6,7 @@ include './bootstrap.php'; ?>
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="./css/Style.css">
-        <title></title>
+        <title>Survey</title>
     </head>
     <body>
         <div id="errors">

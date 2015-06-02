@@ -11,7 +11,7 @@ include './bootstrap.php'; ?>
     <body>
         <div id="header">
             
-            <h1>Welcome!</h1>
+            <h1>Welcome Admin</h1>
             <div id="user">
              <?php 
                 $pdo = new DB($dbConfig);
@@ -22,16 +22,19 @@ include './bootstrap.php'; ?>
                 
                 
             if ( !$util->isLoggedin() ) {
-                echo'<a href="Register.php">Register</a> &nbsp <a href="Login.php">Login</a>';
+                $util->redirect("index.php");
             } else {
                 echo' <a href="?logout">Logout</a>';
             }
+            
+            
+            
         ?>
             </div>
             
             <div id="nav">
                
-                <a href="TakeSurvey.php">Survey</a> 
+                
             
             </div><!-- end nav-->
             
@@ -56,7 +59,7 @@ include './bootstrap.php'; ?>
                 $surveyModel = new SurveyModel();
                 
                 $surveyService = new SurveyService($db, $util, $validator, $surveyDAO, $surveyModel);
-                $surveyService->displayResults();
+                $surveyService->adminDisplayResults();
                 ?>
                 
             </table>

@@ -42,11 +42,11 @@ class SurveyService
         {
             if($this->_SurveyDAO->create($this->_SurveyModel))
             {
-                echo 'Survey Added.';
+                echo 'Request Complete.';
             }
             else
             {
-                echo 'Survey not added.';
+                echo 'Request Failed.';
             }
         }
     }
@@ -120,7 +120,7 @@ class SurveyService
     public function adminDisplayResults()
     {
         
-        
+        $surveyDAO = new SurveyDAO($this->_DB);
         
         $stmt= $this->_DB->prepare("SELECT * FROM survey"); 
         
@@ -133,8 +133,9 @@ class SurveyService
         {
             
             echo '<tr><td>',$values['First'] . " " . $values['Last'],'</td><td>',$values['Gender'],'</td>';
-            echo '<td>',$values['City'],'</td><td>', $values['State'],'</td><td>',$values['FavSport'],'</td><td>',$values['FavSport'],'</td>';
-            //echo '<td><form action="#" method="post"><input type="hidden"  name="surveyid" value="',$values['SurveyID'],'" /><input type="hidden" name="action" value="',$surveyDAO->delete(filter_input(INPUT_POST, 'surveyid')),'" /><input type="submit" value="DELETE" /> </form></td>';
+            echo '<td>',$values['City'],'</td><td>', $values['State'],'</td><td>',$values['FavSport'],'</td><td>',$values['FavMusic'],'</td>';
+            echo '<td><form action="#" method="post"><input type="hidden"  name="surveyid" value="',$values['SurveyID'],'" /><input type="hidden" name="action" value="',$surveyDAO->delete(filter_input(INPUT_POST, 'surveyid')),'" /><input type="submit" value="DELETE" /> </form></td>';
+            echo '<td><a href="Edit.php?surveyid=' . $values['SurveyID'] . '">Update</a></td>';
             echo '</tr>';
         }
         
