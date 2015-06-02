@@ -22,8 +22,8 @@ include './bootstrap.php'; ?>
             
             if($util->isPostRequest())
             {
-                $surveyModel->map(filter_input(INPUT_POST));
-                echo 'here';
+                $surveyModel->map(filter_input_array(INPUT_POST));
+                
             }
                else
                {
@@ -43,7 +43,7 @@ include './bootstrap.php'; ?>
             $sport = $surveyModel->getFavsport();
             $music = $surveyModel->getFavmusic();
             
-            $surveyService = new SurveyService($db, $util, $validator, $surveyDAO, $surveyModel);
+            
            
             if ($util->isPostRequest())
         {
@@ -62,6 +62,7 @@ include './bootstrap.php'; ?>
             {
                 $surveyModel->map(filter_input_array(INPUT_POST));
                 
+                $surveyService = new SurveyService($db, $util, $validator, $surveyDAO, $surveyModel);
                 $surveyService->saveForm();
             }
             
