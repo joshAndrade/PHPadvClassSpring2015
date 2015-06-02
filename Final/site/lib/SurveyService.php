@@ -16,6 +16,8 @@ class SurveyService
     private $_SurveyDAO;
     private $_SurveyModel;
     
+    
+    
     public function __construct($db, $util, $validator, $surveyDAO, $surveyModel) 
     {
         $this->_DB = $db;    
@@ -24,7 +26,13 @@ class SurveyService
         $this->_SurveyDAO = $surveyDAO;
         $this->_SurveyModel = $surveyModel;
     }
-    
+    /**
+     * 
+     * Calls the create function when no errors are found.
+     * 
+     * @return boolean     * 
+     * 
+     */
     public function saveForm()
     {
         if(!$this->_Util->isPostRequest())
@@ -51,6 +59,12 @@ class SurveyService
         }
     }
     
+    /**
+     * 
+     * Checks all fields to make sure they meet the required validation
+     * 
+     * 
+     */
     public function validateForm()
     {
         if($this->_Util->isPostRequest())
@@ -87,6 +101,13 @@ class SurveyService
         }
     }
     
+    /**
+     * 
+     * Displays Errors in the _errors array
+     * 
+     * @return type
+     * 
+     */
     public function displayErrors()
     {
         foreach($this->_errors as $value)
@@ -95,11 +116,26 @@ class SurveyService
         }
     }
     
+    /**
+     * 
+     * checks if there are any errors in the _errors array
+     * 
+     * @return type
+     * 
+     */
     public function hasErrors()
     {
         return(count($this->_errors) > 0);
     }
     
+    
+    /**
+     * 
+     * Displays the results of the survey that are stored in the database
+     * 
+     * @return type
+     * 
+     */
     public function displayResults()
     {
        $stmt= $this->_DB->prepare("SELECT * FROM survey"); 
@@ -116,6 +152,15 @@ class SurveyService
         }
     }
     }
+    
+    /**
+     * 
+     * Displays the results of the survey that are stored in the database along with the delete and update functions 
+     * 
+     * 
+     * @return type
+     * 
+     */
     
     public function adminDisplayResults()
     {
