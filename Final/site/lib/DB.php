@@ -1,4 +1,6 @@
 <?php
+namespace finalProject\JAndrade;
+use PDO;
 /**
  * Description of DB
  *

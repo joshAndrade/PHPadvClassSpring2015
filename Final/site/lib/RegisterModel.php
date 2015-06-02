@@ -1,4 +1,6 @@
 <?php
+namespace finalProject\JAndrade;
+
 
 class RegisterModel
 {

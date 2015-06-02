@@ -1,4 +1,6 @@
-<?php include './bootstrap.php'; ?>
+<?php 
+namespace finalProject\JAndrade;
+include './bootstrap.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>

@@ -1,5 +1,6 @@
 <?php
-
+namespace finalProject\JAndrade;
+use PDO;
 /**
  * Description of RegisterDAO
  *
