@@ -13,3 +13,31 @@ Project Tasks:
   Create a way to allow only the user logged in to update and delete their data. Estimated Time - 1/2 week
   Create an admin account that will use different pages from normal users to update and delete data of all users. Estimated Time - 1/2 week
   Finish site design. Estimated Time - 1/2 week
+
+
+CREATE TABLE IF NOT EXISTS `survey` (
+`SurveyID` int(11) NOT NULL,
+  `First` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `Last` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `Gender` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `City` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `State` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `FavSport` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `FavMusic` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `survey` (`SurveyID`, `First`, `Last`, `Gender`, `City`, `State`, `FavSport`, `FavMusic`) VALUES
+(2, 'Josh', 'Andrade', 'male', 'Warwick', 'RI', 'football', 'metal'),
+(10, 'test', 'test', 'male', 'test', 'SD', 'hockey', 'pop');
+
+
+CREATE TABLE IF NOT EXISTS `login` (
+`UserID` int(11) NOT NULL,
+  `UserName` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `PassWord` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `login` (`UserID`, `UserName`, `PassWord`, `created`) VALUES
+(10, 'testg', '$2y$10$4dkCSLciS/DdqHqhl5m0m.cZLvqFRVsetU4jLF9Z.lFie5L/GNXru', '2015-06-01 14:11:12'),
+(15, 'testUser', '$2y$10$njLRXoq3L9eyK61qZD3nPuqwbXt4rXrf3ExEmI6DPICoGs35fTYX.', '2015-06-02 16:58:45');
