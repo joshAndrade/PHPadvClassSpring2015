@@ -45,7 +45,7 @@ class RegisterDAO
        if($stmt->execute(array(':user' => $user)) && $stmt->rowCount() > 0)
        {
            $results = $stmt->fetch(PDO::FETCH_ASSOC);
-           var_dump(password_verify($password, $results['PassWord']));
+           
            return password_verify($password, $results['PassWord']);
        }
        return false;

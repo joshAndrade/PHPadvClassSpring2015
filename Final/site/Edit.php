@@ -44,7 +44,7 @@ include './bootstrap.php'; ?>
             $music = $surveyModel->getFavmusic();
             
              
-            var_dump($state);
+            
            
             if ($util->isPostRequest())
         {
@@ -70,12 +70,7 @@ include './bootstrap.php'; ?>
             
             if($surveyDAO->idExist($surveyModel->getSurveyid()))
             {
-                $surveyModel->map(filter_input_array(INPUT_POST));
-                
-               echo'db'; var_dump($db); echo'<br />';
-               echo 'util'; var_dump($util); echo'<br />';
-               echo 'dao'; var_dump($surveyDAO); echo'<br />';
-               echo 'model'; var_dump($surveyModel); 
+                $surveyModel->map(filter_input_array(INPUT_POST));                             
                 
                 $surveyService = new SurveyService($db, $util, $validator, $surveyDAO, $surveyModel);
                 $surveyService->saveForm();
